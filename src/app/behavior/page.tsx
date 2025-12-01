@@ -116,11 +116,6 @@ export default function BehaviorPage() {
             Which of these challenges do you face with your child?
           </h1>
           
-          {/* Selection count */}
-          <p className="text-sm mb-8 animate-slide-in text-left" style={{ color: 'var(--color-accent)', animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
-            {selectedChallenges.length > 0 && `${selectedChallenges.length} selected`}
-          </p>
-          
           {/* Options - One per row */}
           <div 
             className="mt-8"

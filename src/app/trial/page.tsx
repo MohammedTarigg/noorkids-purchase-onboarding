@@ -20,8 +20,8 @@ export default function TrialPage() {
     return (
       <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'var(--color-bg)' }}>
         <div className="bg-white rounded-3xl p-12 shadow-xl max-w-lg w-full text-center animate-scale-in">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'var(--color-secondary-light)' }}>
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -31,7 +31,10 @@ export default function TrialPage() {
           </p>
           <button 
             onClick={() => window.location.href = '/'}
-            className="text-purple-600 font-semibold hover:text-purple-800"
+            className="font-semibold transition-colors"
+            style={{ color: 'var(--color-secondary)', }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-secondary-dark)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-secondary)'}
           >
             Return to Home
           </button>
@@ -66,7 +69,7 @@ export default function TrialPage() {
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span className="text-green-600">FREE</span>
+              <span style={{ color: 'var(--color-accent)' }}>FREE</span>
             </div>
             <div className="flex justify-between font-bold text-lg text-gray-900 pt-3 border-t border-gray-100">
               <span>Total due today</span>
@@ -89,7 +92,9 @@ export default function TrialPage() {
               <input 
                 type="email" 
                 placeholder="parent@example.com"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all"
+                style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
               />
             </div>
 
@@ -98,14 +103,18 @@ export default function TrialPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all"
+                style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all"
+                style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
                 />
               </div>
             </div>
@@ -116,7 +125,9 @@ export default function TrialPage() {
                 <input 
                   type="text" 
                   placeholder="0000 0000 0000 0000"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all pl-12"
+                  style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                  onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
                 />
                 <svg className="w-6 h-6 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -126,12 +137,16 @@ export default function TrialPage() {
                 <input 
                   type="text" 
                   placeholder="MM / YY"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all"
+                style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
                 />
                 <input 
                   type="text" 
                   placeholder="CVC"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:border-transparent outline-none transition-all"
+                style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                onFocus={(e) => e.currentTarget.style.setProperty('--tw-ring-color', 'var(--color-secondary)')}
                 />
               </div>
             </div>

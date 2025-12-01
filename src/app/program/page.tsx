@@ -20,31 +20,31 @@ const testimonials: Testimonial[] = [
     name: 'Amina',
     username: '@amina_uk',
     initial: 'A',
-    text: 'My kids have learned behavior skills and manners they would not have otherwise. The stories teach values in a way they actually understand.'
+    text: 'My kids have learned behavior skills and manners they would not have otherwise.'
   },
   {
     name: 'Maria',
     username: '@maria_s',
     initial: 'M',
-    text: 'The books teach the kids to engage with Allah and His Prophet along the way. It\'s become our favorite bedtime routine.'
+    text: 'The books teach the kids to engage with Allah and His Prophet along the way.'
   },
   {
     name: 'Yusuf',
     username: '@yusuf_family',
     initial: 'Y',
-    text: 'My daughter now understands the importance of honesty and kindness through these stories. She applies what she learns in real life.'
+    text: 'My daughter now understands the importance of honesty and kindness through these stories.'
   },
   {
     name: 'Fatima',
     username: '@fatima_mom',
     initial: 'F',
-    text: 'As a busy parent, I love how these books make teaching Islamic values so easy. My kids look forward to each new book every month.'
+    text: 'As a busy parent, I love how these books make teaching Islamic values so easy.'
   },
   {
     name: 'Ahmed',
     username: '@ahmed_dad',
     initial: 'A',
-    text: 'The Harvard-designed curriculum really works. I\'ve seen my son\'s confidence and character improve significantly since we started.'
+    text: 'I\'ve seen my son\'s confidence and character improve significantly since we started.'
   }
 ];
 
@@ -217,13 +217,6 @@ export default function ProgramPage() {
                   <div className="swiper-pagination-custom flex items-center justify-center gap-2"></div>
                 </div>
               </div>
-            </div>
-
-            {/* Info Section */}
-            <div className="text-center">
-              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                Try it for 1 month. Cancel anytime.
-              </p>
             </div>
           </div>
           </div>

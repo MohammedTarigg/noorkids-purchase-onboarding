@@ -40,7 +40,13 @@ export default function InsightsPage() {
             paddingTop: 'calc(var(--spacing-sm) + 52px)',
           }}
         >
-          <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mb-4"></div>
+          <div 
+            className="w-16 h-16 border-4 rounded-full animate-spin mb-4"
+            style={{ 
+              borderColor: 'var(--color-secondary-light)',
+              borderTopColor: 'var(--color-secondary)'
+            }}
+          ></div>
           <h2 className="text-xl font-semibold text-gray-700 animate-pulse">Analyzing your profile...</h2>
         </div>
       </>
@@ -89,7 +95,6 @@ export default function InsightsPage() {
           {/* Transition to Solution */}
           <div className="text-center mt-6 animate-slide-in" style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}>
             <p className="text-sm text-gray-500">
-              So how can you effectively nurture these values in a fun, age-appropriate way?
             </p>
           </div>
           </div>

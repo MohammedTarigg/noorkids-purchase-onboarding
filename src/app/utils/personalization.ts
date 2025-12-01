@@ -11,16 +11,16 @@ export const getInsightText = (age: number, challenges: string[], values: string
 
   const templates = {
     young: {
-      sentence1: `At ${age} years old, it's understandable you're concerned about ${mainChallenge}.`,
-      sentence2: `You mentioned wanting to nurture ${mainValue} – this is the perfect age to build these values with the right approach.`
+      sentence1: `At ${age} years old, you're concerned about ${mainChallenge}.`,
+      sentence2: `You want to build ${mainValue} – this is a great age to start.`
     },
     middle: {
-      sentence1: `At ${age}, it's understandable you're concerned about ${mainChallenge}.`,
-      sentence2: `You mentioned wanting to nurture ${mainValue} – this is a pivotal window to shape your child's character.`
+      sentence1: `At ${age}, you're concerned about ${mainChallenge}.`,
+      sentence2: `You want to build ${mainValue} – this is an important time to help your child grow.`
     },
     teen: {
-      sentence1: `At ${age}, it's understandable you're concerned about ${mainChallenge}.`,
-      sentence2: `You mentioned wanting to nurture ${mainValue} – it's not too late, and ${age}-year-olds respond well when values are presented in a way that respects their growing independence.`
+      sentence1: `At ${age}, you're concerned about ${mainChallenge}.`,
+      sentence2: `You want to build ${mainValue} – it's not too late, and teens respond well when given the right support.`
     }
   };
 
