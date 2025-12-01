@@ -18,7 +18,7 @@ export default function TrialPage() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'var(--color-bg)' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--color-bg)', paddingLeft: 'var(--spacing-md)', paddingRight: 'var(--spacing-md)', paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
         <div className="bg-white rounded-3xl p-12 shadow-xl max-w-lg w-full text-center animate-scale-in">
           <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'var(--color-secondary-light)' }}>
             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
