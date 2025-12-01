@@ -1,9 +1,27 @@
+'use client';
+
+import OnboardingHeader from '../components/OnboardingHeader';
+
 export default function TrialPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--color-bg)', paddingLeft: 'var(--spacing-md)', paddingRight: 'var(--spacing-md)', paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
-      <h1 className="text-4xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
-        Checkout Page
-      </h1>
-    </div>
+    <>
+      {/* Header with Progress Bar and Back Button */}
+      <OnboardingHeader currentStep={16} totalSteps={16} />
+      
+      <div 
+        className="min-h-screen flex items-center justify-center" 
+        style={{ 
+          background: 'var(--color-bg)', 
+          paddingLeft: 'var(--spacing-md)', 
+          paddingRight: 'var(--spacing-md)', 
+          paddingTop: 'calc(var(--spacing-sm) + 52px)',
+          paddingBottom: 'var(--spacing-md)' 
+        }}
+      >
+        <h1 className="text-4xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+          Checkout Page
+        </h1>
+      </div>
+    </>
   );
 }
