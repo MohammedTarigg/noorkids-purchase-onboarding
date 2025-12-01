@@ -25,7 +25,7 @@ export default function TrialPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Noor Kids!</h1>
+          <h1 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Welcome to Noor Kids!</h1>
           <p className="text-lg text-gray-600 mb-8">
             Your trial has been activated. We&apos;ve sent a confirmation email with your next steps.
           </p>
@@ -46,7 +46,7 @@ export default function TrialPage() {
         
         {/* Left Column: Summary */}
         <div className="bg-white rounded-3xl p-8 shadow-lg h-fit">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>Order Summary</h2>
           
           <div className="flex items-start gap-4 mb-6 pb-6 border-b border-gray-100">
             <div className="w-16 h-20 bg-gray-200 rounded-md shrink-0"></div>
@@ -81,7 +81,7 @@ export default function TrialPage() {
 
         {/* Right Column: Checkout Form (Simulated) */}
         <div className="bg-white rounded-3xl p-8 shadow-xl">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Secure Checkout</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--color-text-primary)' }}>Secure Checkout</h2>
           
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div>
