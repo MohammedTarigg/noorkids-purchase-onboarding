@@ -1,26 +1,252 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Noor Kids Brand Colors */
+  --color-primary: #f4ed7b;         /* Brand Yellow */
+  --color-primary-dark: #d4cd5b;    /* Darker Yellow for hover/active */
+  --color-primary-light: #f9f5a0;   /* Softer Yellow for highlights */
+
+  --color-secondary: #1565C0;       /* Deep Noor Kids Blue (approx site/hero bg) */
+  --color-secondary-dark: #0D47A1;  /* Dark Blue for strong emphasis */
+  --color-secondary-light: #42A5F5; /* Light Blue for subtle accents */
+
+  --color-accent: #43A047;          /* Noor Kids Green (bottom ribbon style) */
+  --color-accent-dark: #2E7D32;     /* Dark Green for hover/CTA borders */
+  
+  --color-cta: #f4ed7b;             /* CTA Button Yellow (same as primary) */
+
+  /* Button Border Variables */
+  --button-border-width: 1px;
+  --color-button-border: 32, 38, 90; /* #20265a RGB values for border */
+
+  /* Neutrals tuned to feel like noorkids.com */
+  --color-bg: #FFFFFF;              /* Pure White */
+  --color-bg-white: #FFFFFF;
+  --color-bg-alt: #F9FAFF;          /* Very light bluish background */
+  --color-bg-section: #F3F5FF;      /* Section backgrounds (cards / bands) */
+
+  --color-text-primary: #111827;    /* Near-black text (good contrast on white) */
+  --color-text-secondary: #4B5563;  /* Medium gray for secondary text */
+  --color-text-light: #9CA3AF;      /* Muted gray for hints / placeholders */
+
+  /* Shadows - soft, playful but subtle */
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08),
+               0 2px 4px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08),
+               0 4px 6px -2px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08),
+               0 10px 10px -5px rgba(15, 23, 42, 0.04);
+
+  /* Border Radius - soft corners like Noor Kids */
+  --radius-sm: 0.5rem;   /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.5rem;   /* 24px */
+  --radius-2xl: 2rem;    /* 32px */
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Solid Color Utilities - No gradients */
+
+/* Button Base Styles */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 3D Button Effect */
+.button-3d {
+  transform-origin: center;
+}
+
+.button-3d--pressed {
+  transform: scale(0.95);
+}
+
+.button-3d--shadow:not(.button-3d--pressed):not(.button-3d--disabled) {
+  box-shadow: 0 1px 2px rgba(239, 239, 239, 0.078);
+}
+
+.button-3d--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: scale(1) !important;
+}
+
+.button-3d__text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Focus Styles for Accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+a,
+button,
+input,
+select,
+textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-primary-light);
+  color: #000;
+}
+
+/* Placeholder Styles */
+::placeholder {
+  color: var(--color-text-light);
+  opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
 }
