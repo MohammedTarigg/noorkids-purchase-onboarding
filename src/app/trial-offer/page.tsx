@@ -62,7 +62,7 @@ export default function TrialOfferPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Get Your First Month for Just 99¢
             </h1>
             
@@ -71,7 +71,7 @@ export default function TrialOfferPage() {
               {bulletPoints.map((point, index) => (
                 <div key={index} className="flex items-center gap-3 animate-slide-in" style={{ animationDelay: `${0.1 + index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}>
                   {point.icon}
-                  <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
+                  <p className="text-base text-left" style={{ color: 'var(--color-text-secondary)' }}>
                     {point.text}
                   </p>
                 </div>

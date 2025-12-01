@@ -15,7 +15,7 @@ export default function FunPage() {
     {
       text: 'Engaging stories',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-primary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       )
@@ -23,7 +23,7 @@ export default function FunPage() {
     {
       text: 'Activities kids look forward to',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-primary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
@@ -31,7 +31,7 @@ export default function FunPage() {
     {
       text: 'No lectures, no screens',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-primary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       )
@@ -62,7 +62,7 @@ export default function FunPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Learning Islam Should Feel Fun — Not Like Homework
             </h1>
             
@@ -74,7 +74,7 @@ export default function FunPage() {
                     {point.icon}
                   </div>
                   <div className="flex-1 flex items-center">
-                    <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
+                    <p className="text-base text-left" style={{ color: 'var(--color-text-secondary)' }}>
                       {point.text}
                     </p>
                   </div>

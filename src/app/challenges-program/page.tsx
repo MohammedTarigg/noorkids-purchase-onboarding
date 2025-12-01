@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
@@ -63,12 +63,12 @@ export default function ChallengesProgramPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Designed to Gently Correct Behaviors Like: {formattedChallenges}
             </h1>
             
             {/* Subtext */}
-            <p className="text-base mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+            <p className="text-base mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
               Kids learn through stories — not lectures. Our stories plant the right habits naturally.
             </p>
           </div>

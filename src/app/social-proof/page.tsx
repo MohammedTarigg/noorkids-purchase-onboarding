@@ -79,7 +79,7 @@ export default function SocialProofPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Parents Are Seeing Real Change
             </h1>
             

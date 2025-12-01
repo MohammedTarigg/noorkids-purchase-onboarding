@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
@@ -63,12 +63,12 @@ export default function ValuesProgramPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Helps Build Values Like: {formattedValues}
             </h1>
             
             {/* Subtext */}
-            <p className="text-base mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+            <p className="text-base mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
               Each month&apos;s book focuses on one character trait through stories children remember.
             </p>
           </div>

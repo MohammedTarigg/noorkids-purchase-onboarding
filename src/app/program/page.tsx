@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
 
@@ -25,7 +26,7 @@ export default function ProgramPage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
           <div 
             className="w-full animate-fade-in"
             style={{
@@ -35,7 +36,7 @@ export default function ProgramPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
             Meet the Character-Building Program
           </h1>
           
@@ -43,34 +44,33 @@ export default function ProgramPage() {
           <div className="flex gap-4 items-start mb-8 animate-slide-in" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
             {/* Subtitle Text */}
             <div className="flex-1">
-              <p className="text-base mb-2 text-left" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-base mb-2 text-center" style={{ color: 'var(--color-text-secondary)' }}>
                 A monthly journey to raise a confident, kind Muslim child.
               </p>
-              <p className="text-sm text-left" style={{ color: 'var(--color-text-light)' }}>
+              <p className="text-sm text-center" style={{ color: 'var(--color-text-light)' }}>
                 Monthly Storybooks & Activities
               </p>
             </div>
             
-            {/* Book Image Placeholder */}
+            {/* Book Image */}
             <div 
-              className="relative rounded-xl overflow-hidden flex items-center justify-center shrink-0"
+              className="relative rounded-xl overflow-hidden shrink-0"
               style={{
                 width: '100px',
                 height: '130px',
-                backgroundColor: 'var(--color-bg-alt)',
               }}
             >
-              <div 
-                className="w-full h-full flex items-center justify-center text-center rounded-xl"
+              <Image
+                src="/book.webp"
+                alt="Noor Kids Character-Building Program Book"
+                width={100}
+                height={130}
+                className="object-cover rounded-xl"
                 style={{
-                  backgroundColor: 'var(--color-bg-white)',
-                  border: '2px solid #D1D5DB',
+                  width: '100%',
+                  height: '100%',
                 }}
-              >
-                <p className="text-xs font-medium" style={{ color: 'var(--color-text-light)' }}>
-                  Book Cover
-                </p>
-              </div>
+              />
             </div>
           </div>
 

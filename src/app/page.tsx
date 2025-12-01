@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import OnboardingHeader from './components/OnboardingHeader';
 import CTAButton from './components/CTAButton';
 
@@ -35,31 +36,24 @@ export default function WelcomePage() {
             padding: 'var(--spacing-md)',
           }}
         >
-          {/* Hero Placeholder */}
+          {/* Hero Image */}
           <div 
-            className="rounded-2xl overflow-hidden" 
+            className="relative rounded-2xl overflow-hidden" 
             style={{ 
               height: '140px', 
               borderRadius: 'var(--radius-lg)',
               marginBottom: 'var(--spacing-md)',
-              backgroundColor: 'var(--color-primary)',
             }}
           >
-            <div className="w-full h-full flex items-center justify-center">
-              {/* Simple SVG illustration placeholder */}
-              <svg width="120" height="120" viewBox="0 0 200 200" className="opacity-90">
-                {/* Parent figure */}
-                <circle cx="70" cy="60" r="20" fill="#FFF" opacity="0.9" />
-                <rect x="55" y="80" width="30" height="50" rx="15" fill="#FFF" opacity="0.9" />
-                
-                {/* Child figure */}
-                <circle cx="130" cy="80" r="16" fill="#FFF" opacity="0.85" />
-                <rect x="118" y="96" width="24" height="40" rx="12" fill="#FFF" opacity="0.85" />
-                
-                {/* Heart between them */}
-                <path d="M 95 75 C 95 70, 100 65, 105 65 C 107 65, 109 66, 110 68 C 111 66, 113 65, 115 65 C 120 65, 125 70, 125 75 C 125 82, 110 95, 110 95 C 110 95, 95 82, 95 75" fill="#FB923C" />
-              </svg>
-            </div>
+            <Image
+              src="/welcome.webp"
+              alt="Personalize Your Child's Journey"
+              fill
+              className="object-cover"
+              style={{
+                borderRadius: 'var(--radius-lg)',
+              }}
+            />
           </div>
           
           {/* Headline */}

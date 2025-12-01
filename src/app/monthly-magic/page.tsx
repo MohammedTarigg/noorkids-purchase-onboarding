@@ -35,12 +35,12 @@ export default function MonthlyMagicPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-4 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               A New Book Every Month — For 12 Months
             </h1>
             
             {/* Subtext */}
-            <p className="text-base mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+            <p className="text-base mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
               Consistent, bite-sized lessons help your child grow all year long.
             </p>
           </div>

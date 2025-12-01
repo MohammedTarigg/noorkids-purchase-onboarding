@@ -15,7 +15,7 @@ export default function CurriculumPage() {
     {
       text: 'Evidence-based curriculum',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
@@ -23,7 +23,7 @@ export default function CurriculumPage() {
     {
       text: '36 topics across character, faith, & community',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       )
@@ -31,7 +31,7 @@ export default function CurriculumPage() {
     {
       text: 'Designed for real behavioral change',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2.5 }}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       )
@@ -62,19 +62,19 @@ export default function CurriculumPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
               Created at Harvard. Backed by Scholars. Loved by Parents.
             </h1>
             
             {/* Bullet Points */}
             <div className="space-y-6 mb-6">
               {bulletPoints.map((point, index) => (
-                <div key={index} className="flex gap-4 animate-slide-in" style={{ animationDelay: `${0.1 + index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}>
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'var(--color-secondary)' }}>
+                <div key={index} className="flex gap-3 animate-slide-in" style={{ animationDelay: `${0.1 + index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}>
+                  <div className="flex items-center justify-center shrink-0">
                     {point.icon}
                   </div>
                   <div className="flex-1 flex items-center">
-                    <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
+                    <p className="text-base text-left" style={{ color: 'var(--color-text-secondary)' }}>
                       {point.text}
                     </p>
                   </div>
