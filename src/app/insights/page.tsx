@@ -26,13 +26,13 @@ export default function InsightsPage() {
   }, []);
 
   const handleContinue = () => {
-    router.push('/program');
+    router.push('/personalized-program');
   };
 
   if (loading) {
     return (
       <>
-        <OnboardingHeader currentStep={5} totalSteps={6} />
+        <OnboardingHeader currentStep={5} totalSteps={15} />
         <div 
           className="min-h-screen flex flex-col items-center justify-center" 
           style={{ 
@@ -56,7 +56,7 @@ export default function InsightsPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={5} totalSteps={6} />
+      <OnboardingHeader currentStep={5} totalSteps={15} />
       
       <div 
         className="min-h-screen flex flex-col" 
@@ -68,35 +68,53 @@ export default function InsightsPage() {
         }}
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
-          <div 
-            className="w-full animate-fade-in"
-            style={{
-              backgroundColor: 'var(--color-bg-white)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--spacing-md)',
-            }}
-          >
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
-              Your Parenting Insights
-            </h1>
-          </div>
+          <div className="w-full animate-fade-in">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                Your Parenting Insights
+              </h1>
+            </div>
 
-          {/* Insight Content */}
-          {insight && (
-            <div className="mb-8 text-lg leading-relaxed text-center" style={{ color: 'var(--color-text-primary)' }}>
-              <p className="animate-slide-in" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-                {insight.sentence1} {insight.sentence2}
+            {/* Insight Content Card with ECF5FB background */}
+            {insight && (
+              <div 
+                className="mb-6 animate-scale-in"
+                style={{
+                  backgroundColor: '#ECF5FB',
+                  borderRadius: 'var(--radius-2xl)',
+                  padding: 'var(--spacing-xl)',
+                  boxShadow: 'var(--shadow-md)',
+                  animationDelay: '0.2s',
+                  opacity: 0,
+                  animationFillMode: 'forwards',
+                }}
+              >
+                {/* Insight Text */}
+                <div className="text-lg leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
+                  <p className="mb-4 animate-slide-in" style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}>
+                    {insight.sentence1}
+                  </p>
+                  <p className="animate-slide-in font-medium" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
+                    {insight.sentence2}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Additional Context Section */}
+            <div 
+              className="text-center animate-fade-in"
+              style={{
+                animationDelay: '0.6s',
+                opacity: 0,
+                animationFillMode: 'forwards',
+              }}
+            >
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                Let&apos;s create a personalized program just for your family.
               </p>
             </div>
-          )}
-
-          {/* Transition to Solution */}
-          <div className="text-center mt-6 animate-slide-in" style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}>
-            <p className="text-sm text-gray-500">
-            </p>
-          </div>
           </div>
         </div>
       </div>

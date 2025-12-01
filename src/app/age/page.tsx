@@ -38,7 +38,7 @@ export default function AgePage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={2} totalSteps={6} />
+      <OnboardingHeader currentStep={2} totalSteps={15} />
       
       <div 
         className="min-h-screen flex flex-col" 

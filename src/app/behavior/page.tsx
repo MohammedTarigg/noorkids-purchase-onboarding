@@ -91,7 +91,7 @@ export default function BehaviorPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={3} totalSteps={6} />
+      <OnboardingHeader currentStep={3} totalSteps={15} />
       
       <div 
         className="min-h-screen flex flex-col" 

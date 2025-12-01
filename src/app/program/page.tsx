@@ -1,64 +1,20 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
-
-type Testimonial = {
-  name: string;
-  username: string;
-  initial: string;
-  text: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    name: 'Amina',
-    username: '@amina_uk',
-    initial: 'A',
-    text: 'My kids have learned behavior skills and manners they would not have otherwise.'
-  },
-  {
-    name: 'Maria',
-    username: '@maria_s',
-    initial: 'M',
-    text: 'The books teach the kids to engage with Allah and His Prophet along the way.'
-  },
-  {
-    name: 'Yusuf',
-    username: '@yusuf_family',
-    initial: 'Y',
-    text: 'My daughter now understands the importance of honesty and kindness through these stories.'
-  },
-  {
-    name: 'Fatima',
-    username: '@fatima_mom',
-    initial: 'F',
-    text: 'As a busy parent, I love how these books make teaching Islamic values so easy.'
-  },
-  {
-    name: 'Ahmed',
-    username: '@ahmed_dad',
-    initial: 'A',
-    text: 'I\'ve seen my son\'s confidence and character improve significantly since we started.'
-  }
-];
 
 export default function ProgramPage() {
   const router = useRouter();
 
   const handleContinue = () => {
-    router.push('/trial');
+    router.push('/trial-offer');
   };
 
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={6} totalSteps={6} />
+      <OnboardingHeader currentStep={14} totalSteps={15} />
       
       <div 
         className="min-h-screen flex flex-col" 
@@ -153,71 +109,6 @@ export default function ProgramPage() {
               </div>
             </div>
 
-            {/* Testimonials Carousel */}
-            <div className="mb-6">
-              <div className="rounded-xl" style={{ backgroundColor: 'var(--color-bg-white)', border: '1px solid #D1D5DB', padding: '24px' }}>
-                <Swiper
-                  modules={[Autoplay, Pagination]}
-                  spaceBetween={0}
-                  slidesPerView={1}
-                  autoplay={{
-                    delay: 2000,
-                    disableOnInteraction: false,
-                  }}
-                  loop={true}
-                  pagination={{
-                    el: '.swiper-pagination-custom',
-                    clickable: true,
-                    bulletClass: 'swiper-pagination-bullet-custom',
-                    bulletActiveClass: 'swiper-pagination-bullet-active-custom',
-                  }}
-                  className="testimonials-swiper"
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index}>
-                      {/* Header with Avatar, Name, and Stars */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          {/* Avatar */}
-                          <div 
-                            className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-bold text-lg"
-                            style={{ backgroundColor: '#FEF3C7', color: '#F59E0B' }}
-                          >
-                            {testimonial.initial}
-                          </div>
-                          {/* Name and Username */}
-                          <div>
-                            <p className="font-bold text-base mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
-                              {testimonial.name}
-                            </p>
-                            <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
-                              {testimonial.username}
-                            </p>
-                          </div>
-                        </div>
-                        {/* Stars */}
-                        <div className="flex gap-0.5 shrink-0">
-                          {[1,2,3,4,5].map(i => (
-                            <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" style={{ color: '#FCD34D' }}>
-                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                            </svg>
-                          ))}
-                        </div>
-                      </div>
-                      {/* Testimonial Text */}
-                      <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
-                        {testimonial.text}
-                      </p>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                
-                {/* Pagination Dots */}
-                <div className="flex items-center justify-center mt-6">
-                  <div className="swiper-pagination-custom flex items-center justify-center gap-2"></div>
-                </div>
-              </div>
-            </div>
           </div>
           </div>
         </div>
@@ -234,12 +125,8 @@ export default function ProgramPage() {
       >
         <div className="max-w-2xl mx-auto">
           <CTAButton onClick={handleContinue}>
-            Start My 99¢ Trial
+            Continue
           </CTAButton>
-          <div className="flex items-center justify-center gap-2 mt-3 text-xs" style={{ color: 'var(--color-text-light)' }}>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            <span>Secure Checkout • 30-Day Money-Back Guarantee</span>
-          </div>
         </div>
       </footer>
     </>
