@@ -8,7 +8,7 @@ import { getInsightText } from '../utils/personalization';
 
 export default function InsightsPage() {
   const router = useRouter();
-  const [insight, setInsight] = useState<{ intro: string; challenge: string; value: string; conclusion: string } | null>(null);
+  const [insight, setInsight] = useState<{ sentence1: string; sentence2: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,9 +72,6 @@ export default function InsightsPage() {
           >
           {/* Header */}
           <div className="text-center mb-8">
-            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4 bg-purple-100 text-purple-700">
-              Analysis Complete
-            </span>
             <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
               Your Parenting Insights
             </h1>
@@ -82,23 +79,9 @@ export default function InsightsPage() {
 
           {/* Insight Content */}
           {insight && (
-            <div className="space-y-6 mb-8 text-lg leading-relaxed text-gray-700">
+            <div className="mb-8 text-lg leading-relaxed text-center" style={{ color: 'var(--color-text-primary)' }}>
               <p className="animate-slide-in" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-                {insight.intro}
-              </p>
-              
-              <div className="p-6 rounded-2xl bg-orange-50 border-l-4 border-orange-400 animate-slide-in" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
-                <p className="font-medium text-gray-800">
-                  {insight.challenge}
-                </p>
-              </div>
-
-              <p className="animate-slide-in" style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}>
-                {insight.value}
-              </p>
-
-              <p className="font-semibold text-purple-800 animate-slide-in" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
-                {insight.conclusion}
+                {insight.sentence1} {insight.sentence2}
               </p>
             </div>
           )}
