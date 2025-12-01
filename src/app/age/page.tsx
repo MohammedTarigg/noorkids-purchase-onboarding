@@ -6,16 +6,31 @@ import OnboardingHeader from '../components/OnboardingHeader';
 import AgeButton from '../components/AgeButton';
 import CTAButton from '../components/CTAButton';
 
+type AgeRange = {
+  label: string;
+  minAge: number;
+  maxAge: number;
+};
+
 export default function AgePage() {
   const router = useRouter();
-  const [selectedAge, setSelectedAge] = useState<number | null>(null);
+  const [selectedAgeRange, setSelectedAgeRange] = useState<AgeRange | null>(null);
   
-  const ages = [6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const ageRanges: AgeRange[] = [
+    { label: '6-7 years', minAge: 6, maxAge: 7 },
+    { label: '8-9 years', minAge: 8, maxAge: 9 },
+    { label: '10-11 years', minAge: 10, maxAge: 11 },
+    { label: '12-13 years', minAge: 12, maxAge: 13 },
+    { label: '14+ years', minAge: 14, maxAge: 14 },
+  ];
   
   const handleContinue = () => {
-    if (selectedAge) {
-      // Store age in sessionStorage for now (will be replaced with proper state management)
-      sessionStorage.setItem('childAge', selectedAge.toString());
+    if (selectedAgeRange) {
+      // Store the middle age of the range (or minAge for 14+)
+      const ageToStore = selectedAgeRange.maxAge === selectedAgeRange.minAge 
+        ? selectedAgeRange.minAge 
+        : Math.floor((selectedAgeRange.minAge + selectedAgeRange.maxAge) / 2);
+      sessionStorage.setItem('childAge', ageToStore.toString());
       router.push('/behavior');
     }
   };
@@ -34,7 +49,7 @@ export default function AgePage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
           <div 
             className="w-full animate-fade-in"
             style={{
@@ -44,23 +59,27 @@ export default function AgePage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             How old is your child?
           </h1>
           
           {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
             We know a 6-year-old&apos;s needs differ from a 12-year-old&apos;s – let&apos;s get it right for your child.
           </p>
           
-          {/* Age Selection Grid */}
+          {/* Age Selection - One per row */}
           <div 
-            className="grid grid-cols-3 sm:grid-cols-5 mt-8"
-            style={{ gap: 'var(--spacing-xs)' }}
+            className="mt-8"
+            style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--spacing-md)',
+            }}
           >
-            {ages.map((age, index) => (
+            {ageRanges.map((range, index) => (
               <div
-                key={age}
+                key={range.label}
                 className="animate-slide-in"
                 style={{ 
                   animationDelay: `${0.2 + index * 0.05}s`,
@@ -69,9 +88,9 @@ export default function AgePage() {
                 }}
               >
                 <AgeButton
-                  age={age}
-                  selected={selectedAge === age}
-                  onClick={() => setSelectedAge(age)}
+                  label={range.label}
+                  selected={selectedAgeRange?.label === range.label}
+                  onClick={() => setSelectedAgeRange(range)}
                 />
               </div>
             ))}
@@ -92,7 +111,7 @@ export default function AgePage() {
         <div className="max-w-2xl mx-auto">
           <CTAButton 
             onClick={handleContinue}
-            disabled={!selectedAge}
+            disabled={!selectedAgeRange}
           >
             Continue →
           </CTAButton>
