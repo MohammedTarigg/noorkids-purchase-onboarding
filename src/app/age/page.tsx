@@ -59,14 +59,9 @@ export default function AgePage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             How old is your child?
           </h1>
-          
-          {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-            We know a 6-year-old&apos;s needs differ from a 12-year-old&apos;s – let&apos;s get it right for your child.
-          </p>
           
           {/* Age Selection - One per row */}
           <div 

@@ -63,7 +63,7 @@ export default function WelcomePage() {
           </div>
           
           {/* Headline */}
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-2 text-center animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
             Let&apos;s Personalize Your Child&apos;s Journey
           </h1>
           

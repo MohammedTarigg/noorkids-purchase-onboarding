@@ -25,7 +25,7 @@ export default function TrialPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Noor Kids!</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Noor Kids!</h1>
           <p className="text-lg text-gray-600 mb-8">
             Your trial has been activated. We&apos;ve sent a confirmation email with your next steps.
           </p>

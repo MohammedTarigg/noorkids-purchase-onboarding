@@ -1,11 +1,11 @@
 
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 
-const nunitoSans = Nunito_Sans({
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={nunitoSans.className}>{children}</body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }

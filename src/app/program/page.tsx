@@ -40,7 +40,7 @@ export default function ProgramPage() {
               </svg>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 relative z-10">
+            <h1 className="text-2xl font-bold mb-4 relative z-10">
               Meet the Character-Building Program
             </h1>
             <p className="text-xl text-purple-200 max-w-2xl mx-auto relative z-10">

@@ -116,28 +116,9 @@ export default function ValuesPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             What values do you most want to instill in your child?
           </h1>
-          
-          {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-            Choose up to 3 that matter most to you
-          </p>
-          
-          {/* Selection count with encouragement */}
-          <div className="mb-8 animate-slide-in text-left" style={{ animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
-            {selectedValues.length > 0 ? (
-              <p className="text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>
-                ✨ {selectedValues.length} of {MAX_SELECTIONS} selected
-                {selectedValues.length === MAX_SELECTIONS && ' – Great choices!'}
-              </p>
-            ) : (
-              <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
-                Select the values that resonate most with your parenting goals
-              </p>
-            )}
-          </div>
           
           {/* Options - One per row */}
           <div 
@@ -167,27 +148,10 @@ export default function ValuesPage() {
               </div>
             ))}
           </div>
-          
-          {/* Encouragement message */}
-          {selectedValues.length > 0 && (
-            <div 
-              className="mt-4 p-4 rounded-xl animate-fade-in" 
-              style={{ backgroundColor: 'var(--color-bg-alt)' }}
-            >
-              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                💡 <strong>Great choice!</strong> Focusing on values like these is key to building strong character.
-              </p>
-            </div>
-          )}
           </div>
         </div>
         
-        {/* Inspirational note */}
-        <div className="mt-3 text-center animate-fade-in" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
-          <p className="text-xs italic" style={{ color: 'var(--color-text-secondary)' }}>
-            &quot;Imagine your child growing up with these qualities...&quot;
-          </p>
-        </div>
+       
       </div>
       
       {/* Sticky Footer with CTA Button */}

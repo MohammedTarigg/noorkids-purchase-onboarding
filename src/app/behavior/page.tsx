@@ -112,14 +112,9 @@ export default function BehaviorPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             Which of these challenges do you face with your child?
           </h1>
-          
-          {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-            You&apos;re not alone – many parents struggle with these. Select any that apply.
-          </p>
           
           {/* Selection count */}
           <p className="text-sm mb-8 animate-slide-in text-left" style={{ color: 'var(--color-accent)', animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
@@ -156,13 +151,7 @@ export default function BehaviorPage() {
           </div>
           </div>
         </div>
-        
-        {/* Progress note */}
-        <div className="mt-3 text-center animate-fade-in" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
-          <p className="text-xs" style={{ color: 'var(--color-text-light)' }}>
-            🔒 Your responses are private and secure
-          </p>
-        </div>
+    
       </div>
       
       {/* Sticky Footer with CTA Button */}

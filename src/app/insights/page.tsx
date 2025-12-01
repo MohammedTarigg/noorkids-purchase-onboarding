@@ -75,7 +75,7 @@ export default function InsightsPage() {
             <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4 bg-purple-100 text-purple-700">
               Analysis Complete
             </span>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
+            <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
               Your Parenting Insights
             </h1>
           </div>
