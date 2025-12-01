@@ -19,6 +19,7 @@ interface CTAButtonProps {
   backgroundColor?: string;
   textColor?: string;
   selected?: boolean;
+  textAlign?: 'left' | 'center' | 'right';
 }
 
 export default function CTAButton({ 
@@ -37,6 +38,7 @@ export default function CTAButton({
   backgroundColor,
   textColor,
   selected,
+  textAlign = 'center',
 }: CTAButtonProps) {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -54,10 +56,13 @@ export default function CTAButton({
     setIsPressed(false);
   };
 
+  const justifyClass = textAlign === 'left' ? 'justify-start' : textAlign === 'right' ? 'justify-end' : 'justify-center';
+  const textAlignClass = textAlign === 'left' ? 'text-left' : textAlign === 'right' ? 'text-right' : 'text-center';
+  
   const baseStyles = `
     button-3d font-semibold
-    relative inline-flex items-center justify-center
-    border-none cursor-pointer text-center
+    relative inline-flex items-center ${justifyClass}
+    border-none cursor-pointer ${textAlignClass}
     select-none outline-none
     transform-gpu
     ${width || 'w-full'}
@@ -115,7 +120,7 @@ export default function CTAButton({
         borderRadius: borderRadius || 'var(--radius-full)',
         padding: padding || 'var(--spacing-sm) var(--spacing-lg)',
         transition: 'transform 150ms ease-in-out',
-        fontSize: fontSize || '0.875rem',
+        fontSize: fontSize || '1.125rem',
         backgroundColor: finalBackgroundColor,
         color: finalTextColor,
         boxShadow: finalBoxShadow,
@@ -123,7 +128,7 @@ export default function CTAButton({
         ...(width && !width.includes('w-') ? { width } : {}),
       }}
     >
-      <span className="button-3d__text block whitespace-nowrap">
+      <span className={`button-3d__text block ${textAlign === 'left' ? 'text-left' : textAlign === 'right' ? 'text-right' : 'text-center'} ${textAlign === 'center' ? 'whitespace-nowrap' : ''}`}>
         {children}
       </span>
     </button>

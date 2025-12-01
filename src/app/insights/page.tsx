@@ -124,7 +124,7 @@ export default function InsightsPage() {
       >
         <div className="max-w-2xl mx-auto">
           <CTAButton onClick={handleContinue}>
-            See the Solution →
+            See the Solution
           </CTAButton>
         </div>
       </footer>

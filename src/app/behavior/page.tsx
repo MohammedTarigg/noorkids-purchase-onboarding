@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
-import MultiSelectButton from '../components/MultiSelectButton';
+import OptionButton from '../components/OptionButton';
 import CTAButton from '../components/CTAButton';
 
 type Challenge = {
@@ -102,7 +102,7 @@ export default function BehaviorPage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
           <div 
             className="w-full animate-fade-in"
             style={{
@@ -112,22 +112,29 @@ export default function BehaviorPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             Which of these challenges do you face with your child?
           </h1>
           
           {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
             You&apos;re not alone – many parents struggle with these. Select any that apply.
           </p>
           
           {/* Selection count */}
-          <p className="text-sm mb-8 animate-slide-in" style={{ color: 'var(--color-accent)', animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
+          <p className="text-sm mb-8 animate-slide-in text-left" style={{ color: 'var(--color-accent)', animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
             {selectedChallenges.length > 0 && `${selectedChallenges.length} selected`}
           </p>
           
-          {/* Options Grid */}
-          <div className="space-y-4">
+          {/* Options - One per row */}
+          <div 
+            className="mt-8"
+            style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--spacing-md)',
+            }}
+          >
             {challenges.map((challenge, index) => (
               <div 
                 key={challenge.id}
@@ -138,7 +145,7 @@ export default function BehaviorPage() {
                   animationFillMode: 'forwards'
                 }}
               >
-                <MultiSelectButton
+                <OptionButton
                   icon={challenge.icon}
                   label={challenge.label}
                   selected={selectedChallenges.includes(challenge.id)}
@@ -172,7 +179,7 @@ export default function BehaviorPage() {
             onClick={handleContinue}
             disabled={selectedChallenges.length === 0}
           >
-            Continue →
+            Continue
           </CTAButton>
         </div>
       </footer>

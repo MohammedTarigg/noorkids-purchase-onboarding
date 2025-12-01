@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
-import AgeButton from '../components/AgeButton';
+import OptionButton from '../components/OptionButton';
 import CTAButton from '../components/CTAButton';
 
 type AgeRange = {
@@ -87,7 +87,7 @@ export default function AgePage() {
                   animationFillMode: 'forwards'
                 }}
               >
-                <AgeButton
+                <OptionButton
                   label={range.label}
                   selected={selectedAgeRange?.label === range.label}
                   onClick={() => setSelectedAgeRange(range)}
@@ -113,7 +113,7 @@ export default function AgePage() {
             onClick={handleContinue}
             disabled={!selectedAgeRange}
           >
-            Continue →
+            Continue
           </CTAButton>
         </div>
       </footer>

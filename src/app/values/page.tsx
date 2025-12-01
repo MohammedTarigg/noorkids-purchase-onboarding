@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
-import MultiSelectButton from '../components/MultiSelectButton';
+import OptionButton from '../components/OptionButton';
 import CTAButton from '../components/CTAButton';
 
 type Value = {
@@ -106,7 +106,7 @@ export default function ValuesPage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
           <div 
             className="w-full animate-fade-in"
             style={{
@@ -116,17 +116,17 @@ export default function ValuesPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
             What values do you most want to instill in your child?
           </h1>
           
           {/* Subheadline */}
-          <p className="text-lg mb-2 animate-slide-in" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+          <p className="text-lg mb-2 animate-slide-in text-left" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
             Choose up to 3 that matter most to you
           </p>
           
           {/* Selection count with encouragement */}
-          <div className="mb-8 animate-slide-in" style={{ animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
+          <div className="mb-8 animate-slide-in text-left" style={{ animationDelay: '0.15s', opacity: 0, animationFillMode: 'forwards' }}>
             {selectedValues.length > 0 ? (
               <p className="text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>
                 ✨ {selectedValues.length} of {MAX_SELECTIONS} selected
@@ -139,8 +139,15 @@ export default function ValuesPage() {
             )}
           </div>
           
-          {/* Options Grid */}
-          <div className="grid md:grid-cols-2 gap-4">
+          {/* Options - One per row */}
+          <div 
+            className="mt-8"
+            style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--spacing-md)',
+            }}
+          >
             {values.map((value, index) => (
               <div
                 key={value.id}
@@ -151,7 +158,7 @@ export default function ValuesPage() {
                   animationFillMode: 'forwards'
                 }}
               >
-                <MultiSelectButton
+                <OptionButton
                   icon={value.icon}
                   label={value.label}
                   selected={selectedValues.includes(value.id)}
@@ -197,7 +204,7 @@ export default function ValuesPage() {
             onClick={handleContinue}
             disabled={selectedValues.length === 0}
           >
-            Continue →
+            Continue
           </CTAButton>
         </div>
       </footer>

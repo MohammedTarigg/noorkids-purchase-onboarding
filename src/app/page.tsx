@@ -95,7 +95,7 @@ export default function WelcomePage() {
           <CTAButton 
             onClick={handleContinue}
           >
-            Get Started →
+            Get Started
           </CTAButton>
         </div>
       </footer>
