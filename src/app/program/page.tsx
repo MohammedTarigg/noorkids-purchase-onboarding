@@ -142,7 +142,7 @@ export default function ProgramPage() {
               </div>
               {/* Testimonial Text */}
               <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
-                My kids ask for Noor Kids instead of YouTube now. Ten minutes a day changed everything.
+                My kids have learned behavior skills and manners they would not have otherwise. The stories teach values in a way they actually understand.
               </p>
             </div>
 
