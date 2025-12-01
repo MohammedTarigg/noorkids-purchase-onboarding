@@ -44,7 +44,7 @@ export default function TrialPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'var(--color-bg)' }}>
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--color-bg)', paddingLeft: 'var(--spacing-md)', paddingRight: 'var(--spacing-md)', paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
       <div className="w-full max-w-5xl grid md:grid-cols-2 gap-8">
         
         {/* Left Column: Summary */}
