@@ -61,11 +61,10 @@ export default function ProgramPage() {
               }}
             >
               <div 
-                className="w-full h-full flex items-center justify-center text-center"
+                className="w-full h-full flex items-center justify-center text-center rounded-xl"
                 style={{
                   backgroundColor: 'var(--color-bg-white)',
-                  border: '2px solid var(--color-bg-alt)',
-                  borderRadius: 'var(--radius-lg)',
+                  border: '2px solid #D1D5DB',
                 }}
               >
                 <p className="text-xs font-medium" style={{ color: 'var(--color-text-light)' }}>
@@ -111,16 +110,40 @@ export default function ProgramPage() {
             </div>
 
             {/* Testimonial */}
-            <div className="rounded-xl p-6 text-center mb-6" style={{ backgroundColor: 'var(--color-bg-alt)' }}>
-              <div className="flex justify-center gap-1 mb-4" style={{ color: 'var(--color-accent)' }}>
-                {[1,2,3,4,5].map(i => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                ))}
+            <div className="rounded-xl mb-6" style={{ backgroundColor: 'var(--color-bg-white)', border: '1px solid #D1D5DB', padding: '24px' }}>
+              {/* Header with Avatar, Name, and Stars */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  {/* Avatar */}
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-bold text-lg"
+                    style={{ backgroundColor: '#FEF3C7', color: '#F59E0B' }}
+                  >
+                    A
+                  </div>
+                  {/* Name and Username */}
+                  <div>
+                    <p className="font-bold text-base mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
+                      Amina
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
+                      @amina_uk
+                    </p>
+                  </div>
+                </div>
+                {/* Stars */}
+                <div className="flex gap-0.5 shrink-0">
+                  {[1,2,3,4,5].map(i => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" style={{ color: '#FCD34D' }}>
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
               </div>
-              <p className="text-base italic mb-3" style={{ color: 'var(--color-text-secondary)' }}>
-                &quot;My kids have learned behavior skills and manners they would not have otherwise.&quot;
+              {/* Testimonial Text */}
+              <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
+                My kids ask for Noor Kids instead of YouTube now. Ten minutes a day changed everything.
               </p>
-              <p className="font-bold text-sm" style={{ color: 'var(--color-text-primary)' }}>– Maria S., Mom of two</p>
             </div>
 
             {/* Info Section */}
