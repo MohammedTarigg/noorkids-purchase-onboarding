@@ -21,7 +21,8 @@ export default function WelcomePage() {
         className="min-h-screen flex flex-col" 
         style={{ 
           background: 'var(--color-bg)',
-          padding: 'var(--spacing-sm)',
+          paddingLeft: 'var(--spacing-md)',
+          paddingRight: 'var(--spacing-md)',
           paddingTop: 'calc(var(--spacing-sm) + 52px)', // Add space for fixed header
           paddingBottom: 'calc(var(--spacing-sm) + 80px)', // Add space for sticky footer
         }}
@@ -40,7 +41,7 @@ export default function WelcomePage() {
           <div 
             className="relative rounded-2xl overflow-hidden" 
             style={{ 
-              height: '140px', 
+              height: '240px', 
               borderRadius: 'var(--radius-lg)',
               marginBottom: 'var(--spacing-md)',
             }}
@@ -49,7 +50,7 @@ export default function WelcomePage() {
               src="/welcome.webp"
               alt="Personalize Your Child's Journey"
               fill
-              className="object-cover"
+              className="object-contain"
               style={{
                 borderRadius: 'var(--radius-lg)',
               }}

@@ -26,7 +26,7 @@ export default function ProgramPage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
           <div 
             className="w-full animate-fade-in"
             style={{
@@ -36,7 +36,7 @@ export default function ProgramPage() {
             }}
           >
           {/* Headline */}
-          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-2xl font-bold mb-3 animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
             Meet the Character-Building Program
           </h1>
           
@@ -44,10 +44,10 @@ export default function ProgramPage() {
           <div className="flex gap-4 items-start mb-8 animate-slide-in" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
             {/* Subtitle Text */}
             <div className="flex-1">
-              <p className="text-base mb-2 text-center" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-base mb-2" style={{ color: 'var(--color-text-secondary)' }}>
                 A monthly journey to raise a confident, kind Muslim child.
               </p>
-              <p className="text-sm text-center" style={{ color: 'var(--color-text-light)' }}>
+              <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
                 Monthly Storybooks & Activities
               </p>
             </div>
@@ -78,9 +78,9 @@ export default function ProgramPage() {
 
             {/* Benefits */}
             <div className="space-y-6 mb-8">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'var(--color-primary)' }}>
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#111827', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="flex gap-3">
+                <div className="flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Fun & Effective</h3>
@@ -88,9 +88,9 @@ export default function ProgramPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'var(--color-secondary)' }}>
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+              <div className="flex gap-3">
+                <div className="flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Harvard-Designed Curriculum</h3>
@@ -98,9 +98,9 @@ export default function ProgramPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'var(--color-accent)' }}>
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="flex gap-3">
+                <div className="flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-accent-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Consistent Routine</h3>

@@ -37,6 +37,8 @@ export default function InsightsPage() {
           className="min-h-screen flex flex-col items-center justify-center" 
           style={{ 
             background: 'var(--color-bg)',
+            paddingLeft: 'var(--spacing-md)',
+            paddingRight: 'var(--spacing-md)',
             paddingTop: 'calc(var(--spacing-sm) + 52px)',
           }}
         >
@@ -62,24 +64,31 @@ export default function InsightsPage() {
         className="min-h-screen flex flex-col" 
         style={{ 
           background: 'var(--color-bg)',
-          padding: 'var(--spacing-sm)',
+          paddingLeft: 'var(--spacing-md)',
+          paddingRight: 'var(--spacing-md)',
           paddingTop: 'calc(var(--spacing-sm) + 52px)',
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
-          <div className="w-full animate-fade-in">
-            {/* Header */}
-            <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                Your Parenting Insights
-              </h1>
-            </div>
+        <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col justify-between py-8">
+          {/* Header - Top */}
+          <div 
+            className="text-center animate-fade-in"
+            style={{
+              opacity: 0,
+              animationFillMode: 'forwards',
+            }}
+          >
+            <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              Your Parenting Insights
+            </h1>
+          </div>
 
-            {/* Insight Content Card with ECF5FB background */}
+          {/* Insight Content Card - Centered */}
+          <div className="flex-1 flex items-center justify-center my-8">
             {insight && (
               <div 
-                className="mb-6 animate-scale-in"
+                className="w-full animate-scale-in"
                 style={{
                   backgroundColor: '#ECF5FB',
                   borderRadius: 'var(--radius-2xl)',
@@ -101,20 +110,20 @@ export default function InsightsPage() {
                 </div>
               </div>
             )}
+          </div>
 
-            {/* Additional Context Section */}
-            <div 
-              className="text-center animate-fade-in"
-              style={{
-                animationDelay: '0.6s',
-                opacity: 0,
-                animationFillMode: 'forwards',
-              }}
-            >
-              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                Let&apos;s create a personalized program just for your family.
-              </p>
-            </div>
+          {/* Additional Context Section - Bottom */}
+          <div 
+            className="text-center animate-fade-in"
+            style={{
+              animationDelay: '0.6s',
+              opacity: 0,
+              animationFillMode: 'forwards',
+            }}
+          >
+            <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+              Let&apos;s create a personalized program just for your family.
+            </p>
           </div>
         </div>
       </div>

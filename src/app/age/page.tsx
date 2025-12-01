@@ -44,7 +44,8 @@ export default function AgePage() {
         className="min-h-screen flex flex-col" 
         style={{ 
           background: 'var(--color-bg)',
-          padding: 'var(--spacing-sm)',
+          paddingLeft: 'var(--spacing-md)',
+          paddingRight: 'var(--spacing-md)',
           paddingTop: 'calc(var(--spacing-sm) + 52px)',
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
