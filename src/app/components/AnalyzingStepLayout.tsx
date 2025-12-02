@@ -8,7 +8,6 @@ import CTAButton from './CTAButton';
 interface AnalyzingStepLayoutProps {
   currentStep: number;
   totalSteps: number;
-  loadingText?: string;
   loadingDuration?: number; // Duration in milliseconds
   headline: string;
   content: ReactNode | (() => ReactNode); // The content to show after loading (insight card, etc.)
@@ -19,11 +18,16 @@ interface AnalyzingStepLayoutProps {
   continueButtonText?: string;
 }
 
+const analyzingMessages = [
+  'Analyzing your child\'s age and developmental stage...',
+  'Reviewing the challenges you\'re facing...',
+  'Personalizing insights based on your values...',
+];
+
 export default function AnalyzingStepLayout({
   currentStep,
   totalSteps,
-  loadingText = 'Analyzing your profile...',
-  loadingDuration = 1500,
+  loadingDuration = 3000,
   headline,
   content,
   footerText,
@@ -34,6 +38,18 @@ export default function AnalyzingStepLayout({
 }: AnalyzingStepLayoutProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Cycle through analyzing messages
+  useEffect(() => {
+    if (!loading) return;
+
+    const messageInterval = setInterval(() => {
+      setCurrentMessageIndex((prev) => (prev + 1) % analyzingMessages.length);
+    }, loadingDuration / analyzingMessages.length);
+
+    return () => clearInterval(messageInterval);
+  }, [loading, loadingDuration]);
 
   useEffect(() => {
     // Run optional analysis function
@@ -72,16 +88,30 @@ export default function AnalyzingStepLayout({
             paddingBottom: 'calc(var(--spacing-sm) + 80px)',
           }}
         >
-          <div 
-            className="w-16 h-16 border-4 rounded-full animate-spin mb-4"
-            style={{ 
-              borderColor: 'var(--color-secondary-light)',
-              borderTopColor: 'var(--color-secondary)'
-            }}
-          ></div>
-          <h2 className="text-xl font-semibold animate-pulse" style={{ color: 'var(--color-text-secondary)' }}>
-            {loadingText}
-          </h2>
+          <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center">
+            <div 
+              className="w-16 h-16 border-4 rounded-full animate-spin"
+              style={{ 
+                borderColor: 'var(--color-secondary-light)',
+                borderTopColor: 'var(--color-secondary)',
+                marginBottom: 'var(--spacing-xl)',
+              }}
+            ></div>
+            <div className="relative h-8 w-full flex items-center justify-center">
+              {analyzingMessages.map((message, index) => (
+                <h2
+                  key={index}
+                  className="text-xl font-semibold absolute transition-opacity duration-500 text-center w-full"
+                  style={{ 
+                    color: 'var(--color-text-secondary)',
+                    opacity: currentMessageIndex === index ? 1 : 0,
+                  }}
+                >
+                  {message}
+                </h2>
+              ))}
+            </div>
+          </div>
         </div>
       </>
     );
@@ -103,49 +133,53 @@ export default function AnalyzingStepLayout({
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col justify-between py-8">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
+          {/* Header - Top */}
           <div 
-            className="w-full animate-fade-in"
+            className="text-center animate-fade-in"
             style={{
-              backgroundColor: 'var(--color-bg-white)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--spacing-md)',
+              opacity: 0,
+              animationFillMode: 'forwards',
+              marginBottom: 'var(--spacing-xl)',
             }}
           >
-            {/* Header - Top */}
+            <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              {headline}
+            </h1>
+          </div>
+
+          {/* Content Card - Centered */}
+          <div className="flex-1 flex items-center justify-center">
             <div 
-              className="text-center animate-fade-in"
+              className="w-full animate-fade-in flex flex-col"
               style={{
+                backgroundColor: 'var(--color-bg-white)',
+                borderRadius: 'var(--radius-2xl)',
+                padding: 'var(--spacing-md)',
+              }}
+            >
+              {/* Content - Centered */}
+              <div className="flex flex-col items-center justify-center">
+                {typeof content === 'function' ? content() : content}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Text - Below the card, centered */}
+          {footerText && (
+            <div 
+              className="text-center animate-fade-in mt-6"
+              style={{
+                animationDelay: '0.6s',
                 opacity: 0,
                 animationFillMode: 'forwards',
               }}
             >
-              <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
-                {headline}
-              </h1>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                {footerText}
+              </p>
             </div>
-
-            {/* Content - Centered */}
-            <div className="flex-1 flex items-center justify-center my-8">
-              {typeof content === 'function' ? content() : content}
-            </div>
-
-            {/* Footer Text - Bottom */}
-            {footerText && (
-              <div 
-                className="text-center animate-fade-in"
-                style={{
-                  animationDelay: '0.6s',
-                  opacity: 0,
-                  animationFillMode: 'forwards',
-                }}
-              >
-                <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                  {footerText}
-                </p>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
       

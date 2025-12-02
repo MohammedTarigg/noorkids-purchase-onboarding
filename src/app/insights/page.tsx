@@ -52,8 +52,7 @@ export default function InsightsPage() {
     <AnalyzingStepLayout
       currentStep={5}
       totalSteps={15}
-      loadingText="Analyzing your profile..."
-      loadingDuration={1500}
+      loadingDuration={3000}
       headline="Your Parenting Insights"
       content={getInsightContent}
       footerText="Let's create a personalized program just for your family."
