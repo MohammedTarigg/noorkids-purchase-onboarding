@@ -110,11 +110,12 @@ export default function BooksPickedPage() {
                       }}
                     >
                       <div
-                        className="relative cursor-pointer transition-all duration-200 overflow-hidden flex flex-col"
+                        className="relative cursor-pointer transition-all duration-200 flex flex-row items-center gap-4"
                         onClick={() => toggleBook(bundle.id)}
                         style={{
-                          borderRadius: 'var(--radius-xl)',
                           backgroundColor: isSelected ? 'var(--color-bg-secondary)' : 'var(--color-bg-white)',
+                          padding: 'var(--spacing-md)',
+                          borderRadius: 'var(--radius-xl)',
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = 'scale(1.02)';
@@ -154,12 +155,13 @@ export default function BooksPickedPage() {
                           )}
                         </div>
 
-                        {/* Image */}
+                        {/* Image - squared and smaller */}
                         <div
+                          className="relative shrink-0"
                           style={{
-                            position: 'relative',
-                            width: '100%',
-                            height: '200px',
+                            width: '100px',
+                            height: '100px',
+                            borderRadius: 'var(--radius-lg)',
                             overflow: 'hidden',
                           }}
                         >
@@ -176,12 +178,7 @@ export default function BooksPickedPage() {
                         </div>
 
                         {/* Title */}
-                        <div 
-                          className="p-4"
-                          style={{
-                            backgroundColor: isSelected ? 'var(--color-bg-secondary)' : 'var(--color-bg-white)',
-                          }}
-                        >
+                        <div className="flex-1">
                           <p className="text-base font-semibold leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
                             {bundle.title}
                           </p>
