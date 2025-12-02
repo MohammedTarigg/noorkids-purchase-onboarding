@@ -69,6 +69,7 @@ export default function AnalyzingStepLayout({
             paddingLeft: 'var(--spacing-md)',
             paddingRight: 'var(--spacing-md)',
             paddingTop: 'calc(var(--spacing-sm) + 52px)',
+            paddingBottom: 'calc(var(--spacing-sm) + 80px)',
           }}
         >
           <div 

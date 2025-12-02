@@ -15,7 +15,7 @@ export default function TrialPage() {
           paddingLeft: 'var(--spacing-md)', 
           paddingRight: 'var(--spacing-md)', 
           paddingTop: 'calc(var(--spacing-sm) + 52px)',
-          paddingBottom: 'var(--spacing-md)' 
+          paddingBottom: 'calc(var(--spacing-sm) + 80px)' 
         }}
       >
         <h1 className="text-4xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
