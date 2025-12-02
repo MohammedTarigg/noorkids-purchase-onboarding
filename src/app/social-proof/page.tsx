@@ -60,7 +60,7 @@ export default function SocialProofPage() {
   const router = useRouter();
 
   const handleContinue = () => {
-    router.push('/program');
+    router.push('/start-trial');
   };
 
   return (

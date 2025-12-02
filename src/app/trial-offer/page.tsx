@@ -105,9 +105,6 @@ export default function TrialOfferPage() {
           
           {/* Trust Badges */}
           <div className="flex flex-col items-center gap-2 mt-4">
-            <p className="text-xs" style={{ color: 'var(--color-text-light)' }}>
-              952+ reviews
-            </p>
             <div className="flex items-center justify-center gap-4 text-xs" style={{ color: 'var(--color-text-light)' }}>
               <div className="flex items-center gap-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
