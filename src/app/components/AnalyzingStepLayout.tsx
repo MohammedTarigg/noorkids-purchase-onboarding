@@ -134,36 +134,30 @@ export default function AnalyzingStepLayout({
         }}
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
-          {/* Header - Top */}
-          {headline && (
-            <div 
-              className="text-center animate-fade-in"
-              style={{
-                opacity: 0,
-                animationFillMode: 'forwards',
-                marginBottom: 'var(--spacing-xl)',
-              }}
-            >
-              <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+          <div 
+            className="w-full animate-fade-in"
+            style={{
+              backgroundColor: 'var(--color-bg-white)',
+              borderRadius: 'var(--radius-2xl)',
+              padding: 'var(--spacing-md)',
+            }}
+          >
+            {/* Headline - Top of card */}
+            {headline && (
+              <h1 
+                className="text-2xl font-bold text-left animate-slide-in" 
+                style={{ 
+                  color: 'var(--color-text-primary)',
+                  marginBottom: 'var(--spacing-xl)',
+                }}
+              >
                 {headline}
               </h1>
-            </div>
-          )}
+            )}
 
-          {/* Content Card - Centered */}
-          <div className="flex-1 flex items-center justify-center">
-            <div 
-              className="w-full animate-fade-in flex flex-col"
-              style={{
-                backgroundColor: 'var(--color-bg-white)',
-                borderRadius: 'var(--radius-2xl)',
-                padding: 'var(--spacing-md)',
-              }}
-            >
-              {/* Content - Centered */}
-              <div className="flex flex-col items-center justify-center">
-                {typeof content === 'function' ? content() : content}
-              </div>
+            {/* Content */}
+            <div className="flex flex-col">
+              {typeof content === 'function' ? content() : content}
             </div>
           </div>
 

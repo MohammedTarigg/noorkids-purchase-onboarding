@@ -1,13 +1,40 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface InsightCardProps {
   icon: ReactNode;
   text: string;
+  isVisible: boolean;
+  animationDelay?: number;
+  transitionDuration?: number;
+  prefersReducedMotion?: boolean;
 }
 
-export default function InsightCard({ icon, text }: InsightCardProps) {
+export default function InsightCard({ 
+  icon, 
+  text, 
+  isVisible,
+  animationDelay = 0,
+  transitionDuration = 400,
+  prefersReducedMotion = false,
+}: InsightCardProps) {
+  const [shouldAnimate, setShouldAnimate] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setShouldAnimate(true);
+      return;
+    }
+
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, animationDelay);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, animationDelay, prefersReducedMotion]);
+
   return (
     <div 
       className="flex items-center gap-3 rounded-xl"
@@ -16,6 +43,9 @@ export default function InsightCard({ icon, text }: InsightCardProps) {
         border: '1px solid var(--color-bg-alt)',
         minHeight: '80px',
         padding: 'var(--spacing-md)',
+        opacity: shouldAnimate ? 1 : 0,
+        transform: shouldAnimate ? 'translateY(0)' : 'translateY(20px)',
+        transition: `opacity ${transitionDuration}ms ease-in-out, transform ${transitionDuration}ms ease-in-out`,
       }}
     >
       <div 
