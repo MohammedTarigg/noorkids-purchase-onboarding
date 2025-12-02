@@ -2,40 +2,13 @@
 
 import ContentStepLayout from '../components/ContentStepLayout';
 
-const bulletPoints = [
-  {
-    text: 'Engaging stories',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    )
-  },
-  {
-    text: 'Activities kids look forward to',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    )
-  },
-  {
-    text: 'No lectures, no screens',
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    )
-  }
-];
-
 export default function FunPage() {
   return (
     <ContentStepLayout
-      currentStep={10}
-      totalSteps={19}
-      headline="Learning Islam Should Feel Fun — Not Like Homework"
-      bulletPoints={bulletPoints}
+      currentStep={11}
+      totalSteps={15}
+      headline="36 Character Topics (Akhlaq, Faith, Manners, Identity)"
+      subtext="Each week or month covers a core value like honesty, kindness, or patience. Topics match the values you chose."
       nextRoute="/values-program"
     />
   );

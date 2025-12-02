@@ -56,8 +56,8 @@ export const getInsightText = (
   const mainValue = values[0] ? mapValueId(values[0]) : 'strong character';
   const frequencyText = frequency ? mapFrequencyId(frequency) : 'regularly';
 
-  // Section 1: Based on what you shared, age [X]…
-  const section1 = `Based on what you shared, age ${age}…`;
+  // Section 1: Based on what you shared, here's what matters now:
+  const section1 = `Based on what you shared, here's what matters now:`;
 
   // Section 2: It's totally normal for kids this age to test boundaries...
   const section2 = `It's totally normal for kids this age to test boundaries — but these are exactly the years when character habits are formed.`;

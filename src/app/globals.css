@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -312,6 +313,58 @@ textarea {
 .testimonials-swiper .swiper-button-disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+/* Insights Swiper Styles */
+.insights-swiper {
+  padding-bottom: 0 !important;
+  overflow: visible !important;
+}
+
+.insights-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.insights-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.insights-swiper .swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.insights-swiper-button-prev.swiper-button-disabled,
+.insights-swiper-button-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.insights-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.insights-pagination .swiper-pagination-bullet-custom {
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-text-light);
+  opacity: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.insights-pagination .swiper-pagination-bullet-active-custom {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  width: 10px;
+  height: 10px;
 }
 
 /* Publications Carousel */

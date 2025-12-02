@@ -1,11 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import AnalyzingStepLayout from '../components/AnalyzingStepLayout';
+import InsightCard from '../components/InsightCard';
 import { getInsightText, type InsightSections } from '../utils/personalization';
 
 export default function InsightsPage() {
@@ -27,18 +24,11 @@ export default function InsightsPage() {
   const getInsightContent = () => {
     if (!insight) return null;
 
-    // Section 1 is plain text, sections 2-4 are carousel cards
-    const carouselCards = [
-      { text: insight.section2 },
-      { text: insight.section3 },
-      { text: insight.section4 },
-    ];
-
     return (
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col gap-6">
         {/* Section 1: Plain text, no animation */}
         <p
-          className="text-lg leading-relaxed mb-6"
+          className="text-lg leading-relaxed"
           style={{ 
             color: 'var(--color-text-primary)',
             fontWeight: 500,
@@ -47,55 +37,34 @@ export default function InsightsPage() {
           {insight.section1}
         </p>
 
-        {/* Sections 2-4: Carousel cards */}
-        <div className="w-full">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={0}
-            slidesPerView={1}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            loop={true}
-            pagination={{
-              el: '.insights-pagination',
-              clickable: true,
-              bulletClass: 'swiper-pagination-bullet-custom',
-              bulletActiveClass: 'swiper-pagination-bullet-active-custom',
-            }}
-            className="insights-swiper"
-            style={{ width: '100%', overflow: 'hidden' }}
-          >
-            {carouselCards.map((card, index) => (
-              <SwiperSlide key={index} style={{ width: '100%', flexShrink: 0 }}>
-                <div className="w-full">
-                  <div
-                    className="w-full"
-                    style={{
-                      backgroundColor: 'var(--color-bg-white)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: 'var(--spacing-lg)',
-                      boxShadow: 'var(--shadow-md)',
-                    }}
-                  >
-                    <p
-                      className="text-base leading-relaxed"
-                      style={{ color: 'var(--color-text-primary)' }}
-                    >
-                      {card.text}
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Sections 2-4: Insight Cards */}
+        <div className="w-full flex flex-col gap-4">
+          <InsightCard
+            icon={
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2 }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            }
+            text={insight.section2}
+          />
           
-          {/* Pagination Dots */}
-          <div className="flex items-center justify-center mt-4">
-            <div className="insights-pagination"></div>
-          </div>
+          <InsightCard
+            icon={
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2 }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            }
+            text={insight.section3}
+          />
+          
+          <InsightCard
+            icon={
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2 }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            }
+            text={insight.section4}
+          />
         </div>
       </div>
     );

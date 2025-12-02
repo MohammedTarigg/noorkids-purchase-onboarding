@@ -3,20 +3,19 @@
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
-import PublicationsCarousel from '../components/PublicationsCarousel';
 import FeatureCard from '../components/FeatureCard';
 
 export default function ProgramPage() {
   const router = useRouter();
 
   const handleContinue = () => {
-    router.push('/program-details');
+    router.push('/trial-offer');
   };
 
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={19} totalSteps={19} />
+      <OnboardingHeader currentStep={16} totalSteps={15} />
       
       <div 
         className="min-h-screen flex flex-col" 
@@ -78,18 +77,6 @@ export default function ProgramPage() {
                   title="Evidence-based curriculum framework"
                 />
               </div>
-            </div>
-
-            {/* Publications Carousel */}
-            <div 
-              className="animate-slide-in pb-4"
-              style={{ 
-                animationDelay: '0.2s', 
-                opacity: 0, 
-                animationFillMode: 'forwards',
-              }}
-            >
-              <PublicationsCarousel />
             </div>
           </div>
         </div>
