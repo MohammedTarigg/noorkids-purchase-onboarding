@@ -285,3 +285,37 @@ textarea {
   opacity: 0.3;
   cursor: not-allowed;
 }
+
+/* Publications Carousel */
+@keyframes publicationsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.publications-carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: publicationsScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.publications-carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  min-width: 120px;
+  flex-shrink: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.publications-carousel-image {
+  object-fit: contain;
+}
