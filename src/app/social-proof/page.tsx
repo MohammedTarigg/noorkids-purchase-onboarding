@@ -92,43 +92,44 @@ export default function SocialProofPage() {
               Kid tested, scholar approved.
             </h1>
             
-            {/* Overall Rating */}
+            {/* Statistics Section */}
             <div 
-              className="text-center animate-fade-in"
+              className="w-full animate-fade-in"
               style={{
                 animationDelay: '0.1s',
                 opacity: 0,
                 animationFillMode: 'forwards',
+                backgroundColor: 'var(--color-stats-bg)',
+                borderRadius: 'var(--radius-lg)',
+                padding: 'var(--spacing-md)',
               }}
             >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-3xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
-                  4.84
-                </span>
-                <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map(i => (
-                    <svg 
-                      key={i} 
-                      className="w-5 h-5" 
-                      viewBox="0 0 24 24" 
-                      style={{ 
-                        color: i <= 4.84 ? '#FCD34D' : '#E5E7EB',
-                        fill: i <= 4.84 ? 'currentColor' : 'none',
-                        stroke: i <= 4.84 ? 'none' : 'currentColor',
-                        strokeWidth: 1.5
-                      }}
-                    >
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                  ))}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-text-white)' }}>
+                    250K+
+                  </div>
+                  <div className="text-sm" style={{ color: 'var(--color-text-white)' }}>
+                    Happy Families
+                  </div>
                 </div>
-                <span className="text-lg font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
-                  out of 5
-                </span>
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-text-white)' }}>
+                    350+
+                  </div>
+                  <div className="text-sm" style={{ color: 'var(--color-text-white)' }}>
+                    Hours of Courses
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-text-white)' }}>
+                    100+
+                  </div>
+                  <div className="text-sm" style={{ color: 'var(--color-text-white)' }}>
+                    Books Written
+                  </div>
+                </div>
               </div>
-              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                Based on 952 reviews
-              </p>
             </div>
             
             {/* Scholar Testimonials Section */}

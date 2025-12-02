@@ -26,7 +26,7 @@ export default function InsightsPage() {
       <div 
         className="w-full animate-scale-in"
         style={{
-          backgroundColor: '#ECF5FB',
+          backgroundColor: 'var(--color-bg-secondary)',
           borderRadius: 'var(--radius-2xl)',
           padding: 'var(--spacing-xl)',
           boxShadow: 'var(--shadow-md)',

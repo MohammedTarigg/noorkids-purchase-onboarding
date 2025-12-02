@@ -14,6 +14,7 @@
   --color-accent-dark: #2E7D32;     /* Dark Green for hover/CTA borders */
   
   --color-cta: #f4ed7b;             /* CTA Button Yellow (same as primary) */
+  --color-stats-bg: #204c96;        /* Statistics background blue */
 
   /* Button Border Variables */
   --button-border-width: 1px;
@@ -24,6 +25,7 @@
   --color-bg-white: #FFFFFF;
   --color-bg-alt: #F9FAFF;          /* Very light bluish background */
   --color-bg-section: #F3F5FF;      /* Section backgrounds (cards / bands) */
+  --color-bg-secondary: #ECF5FB;    /* Secondary background color */
 
   --color-text-primary: #134D77;     /* Dark blue for titles */
   --color-text-body: #111827;      /* Lighter black for body text */

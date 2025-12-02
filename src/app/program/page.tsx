@@ -29,88 +29,112 @@ export default function ProgramPage() {
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
           <div 
-            className="w-full animate-fade-in"
+            className="w-full animate-fade-in flex-1 flex flex-col justify-between gap-4"
             style={{
               backgroundColor: 'var(--color-bg-white)',
               borderRadius: 'var(--radius-2xl)',
               padding: 'var(--spacing-md)',
             }}
           >
-          {/* Headline */}
-          <h1 className="text-2xl font-bold mb-3 animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
-            Meet the Character-Building Program
-          </h1>
-          
-          {/* Subtitle with Book Cover */}
-          <div className="flex gap-4 items-start mb-8 animate-slide-in" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-            {/* Subtitle Text */}
-            <div className="flex-1">
-              <p className="text-base mb-2" style={{ color: 'var(--color-text-secondary)' }}>
-                A monthly journey to raise a confident, kind Muslim child.
-              </p>
-              <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
-                Monthly Storybooks & Activities
+            {/* Hero Section */}
+            <div className="animate-slide-in">
+              {/* Age Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-4" style={{ backgroundColor: 'var(--color-bg-alt)' }}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span className="text-sm font-bold" style={{ color: 'var(--color-secondary)' }}>
+                  Ages 4-9
+                </span>
+              </div>
+              
+              <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
+                What is the Character-Building Program?
+              </h1>
+              <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
+                Monthly stories, activities, and lessons that teach Islamic values.
               </p>
             </div>
-            
-            {/* Book Image */}
+
+            {/* What is it? Section */}
             <div 
-              className="relative rounded-xl overflow-hidden shrink-0"
-              style={{
-                width: '100px',
-                height: '130px',
+              className="animate-slide-in"
+              style={{ 
+                animationDelay: '0.1s', 
+                opacity: 0, 
+                animationFillMode: 'forwards',
+                backgroundColor: 'var(--color-bg-secondary)',
+                borderRadius: 'var(--radius-lg)',
+                padding: 'var(--spacing-md)',
               }}
             >
-              <Image
-                src="/book.webp"
-                alt="Noor Kids Character-Building Program Book"
-                width={100}
-                height={130}
-                className="object-cover rounded-xl"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
+              <div className="flex gap-4 items-start">
+                {/* Book Image */}
+                <div 
+                  className="relative rounded-xl overflow-hidden shrink-0"
+                  style={{
+                    width: '100px',
+                    height: '130px',
+                  }}
+                >
+                  <Image
+                    src="/book.webp"
+                    alt="Noor Kids Character-Building Program Book"
+                    width={100}
+                    height={130}
+                    className="object-cover rounded-xl"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  />
+                </div>
+                
+                <div className="flex-1">
+                  <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+                    Nurtures a love for Islam while helping children develop character, confidence, and resilience.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div>
+
 
             {/* Benefits */}
-            <div className="space-y-6 mb-8">
-              <div className="flex gap-3">
-                <div className="flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Fun & Effective</h3>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>Engaging stories kids actually enjoy reading.</p>
-                </div>
-              </div>
+            <div 
+              className="animate-slide-in"
+              style={{ 
+                animationDelay: '0.2s', 
+                opacity: 0, 
+                animationFillMode: 'forwards',
+              }}
+            >
+              <div className="space-y-4">
+                  <div className="flex gap-3">
+                    <div className="flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold mb-0.5" style={{ color: 'var(--color-text-primary)' }}>Fun & Effective</h3>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Engaging stories kids enjoy reading.</p>
+                    </div>
+                  </div>
 
-              <div className="flex gap-3">
-                <div className="flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Harvard-Designed Curriculum</h3>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>Evidence-based framework for Character, Faith, and Community.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <div className="flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-accent-dark)', strokeWidth: 2.5 }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>Consistent Routine</h3>
-                  <p style={{ color: 'var(--color-text-secondary)' }}>A new book every month your child will look forward to.</p>
-                </div>
+                  <div className="flex gap-3">
+                    <div className="flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary-dark)', strokeWidth: 2.5 }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold mb-0.5" style={{ color: 'var(--color-text-primary)' }}>Harvard-Designed</h3>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Evidence-based curriculum framework.</p>
+                    </div>
+                  </div>
               </div>
             </div>
-
-          </div>
           </div>
         </div>
       </div>
