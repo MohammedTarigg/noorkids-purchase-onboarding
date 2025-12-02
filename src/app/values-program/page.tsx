@@ -5,12 +5,11 @@ import ContentStepLayout from '../components/ContentStepLayout';
 
 // Mapping of value IDs to display labels
 const valueLabels: Record<string, string> = {
-  'honesty': 'Honesty',
-  'kindness': 'Kindness',
-  'discipline': 'Discipline',
-  'respect': 'Respect',
-  'confidence': 'Confidence',
-  'faith': 'Faith / Islamic knowledge'
+  'strong_faith_allah': 'Strong Faith & Love of Allah',
+  'confidence_resilience': 'Confidence & Emotional Resilience',
+  'compassion_empathy': 'Compassion & Empathy',
+  'self_discipline_habits': 'Self-Discipline & Good Habits',
+  'gratitude_attitude': 'Gratitude & Positive Attitude'
 };
 
 export default function ValuesProgramPage() {
@@ -25,10 +24,10 @@ export default function ValuesProgramPage() {
     return [];
   });
 
-  // Format values for display: "Honesty / Respect / Discipline"
+  // Format values for display: "Strong Faith & Love of Allah / Confidence & Emotional Resilience"
   const formattedValues = valuesList.length > 0 
     ? valuesList.join(' / ')
-    : 'Honesty / Respect / Kindness'; // Fallback
+    : 'Strong Faith & Love of Allah'; // Fallback
 
   return (
     <ContentStepLayout

@@ -18,7 +18,7 @@ export default function OptionButton({ label, selected, onClick, icon }: OptionB
       width="100%"
       minHeight="56px"
       padding="var(--spacing-md) var(--spacing-lg)"
-      fontSize="1rem"
+      fontSize="0.875rem"
       backgroundColor={selected ? 'var(--color-cta)' : 'var(--color-bg-alt)'}
       textColor={selected ? 'black' : 'var(--color-text-primary)'}
       selected={selected}

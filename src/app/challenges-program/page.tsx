@@ -5,11 +5,11 @@ import ContentStepLayout from '../components/ContentStepLayout';
 
 // Mapping of challenge IDs to display labels
 const challengeLabels: Record<string, string> = {
-  'disrespect': 'Disrespect / Not listening',
-  'dishonesty': 'Lying or dishonesty',
-  'discipline': 'Lack of discipline/routine',
-  'screentime': 'Screen time or distractions',
-  'confidence': 'Struggles with confidence',
+  'not_listening_disrespect': 'Not Listening & Disrespect',
+  'lying_hiding_truth': 'Lying & Hiding the Truth',
+  'screen_time_faith': 'Excess Screen Time & Faith Distraction',
+  'low_confidence_identity': 'Low Confidence & Islamic Identity',
+  'character_manners': 'Overall Character & Manners',
   'other': 'Other'
 };
 
@@ -25,10 +25,10 @@ export default function ChallengesProgramPage() {
     return [];
   });
 
-  // Format challenges for display: "Disrespect / Lying or dishonesty"
+  // Format challenges for display: "Not Listening & Disrespect / Lying & Hiding the Truth"
   const formattedChallenges = challengesList.length > 0 
     ? challengesList.join(' / ')
-    : 'Disrespect / Not listening'; // Fallback
+    : 'Not Listening & Disrespect'; // Fallback
 
   return (
     <ContentStepLayout
