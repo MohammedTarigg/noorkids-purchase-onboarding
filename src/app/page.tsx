@@ -59,13 +59,8 @@ export default function WelcomePage() {
           
           {/* Headline */}
           <h1 className="text-2xl font-bold mb-2 text-center animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
-            Let&apos;s Personalize Your Child&apos;s Journey
+            Help your child grow into a confident, kind Muslim.
           </h1>
-          
-          {/* Subheadline */}
-          <p className="text-sm md:text-base mb-4 text-center animate-slide-in" style={{ color: 'var(--color-text-secondary)', animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-            Answer a few quick questions to customize a program for <em>your</em> child
-          </p>
           </div>
         </div>
         
@@ -90,7 +85,7 @@ export default function WelcomePage() {
           <CTAButton 
             onClick={handleContinue}
           >
-            Get Started
+            Build Your Child’s Plan
           </CTAButton>
         </div>
       </footer>
