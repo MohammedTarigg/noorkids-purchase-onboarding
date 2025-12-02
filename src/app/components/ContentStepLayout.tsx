@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import OnboardingHeader from './OnboardingHeader';
 import CTAButton from './CTAButton';
 
@@ -10,12 +11,20 @@ interface BulletPoint {
   icon: ReactNode;
 }
 
+interface ImageProps {
+  src: string;
+  alt: string;
+  aspectRatio?: string;
+  showBorder?: boolean;
+}
+
 interface ContentStepLayoutProps {
   currentStep: number;
   totalSteps: number;
   headline: string;
   subtext?: string;
   bulletPoints?: BulletPoint[];
+  image?: ImageProps;
   onContinue?: () => void;
   nextRoute: string;
   continueButtonText?: string;
@@ -27,6 +36,7 @@ export default function ContentStepLayout({
   headline,
   subtext,
   bulletPoints,
+  image,
   onContinue,
   nextRoute,
   continueButtonText = 'Continue',
@@ -69,7 +79,7 @@ export default function ContentStepLayout({
               className="text-2xl font-bold animate-slide-in text-center" 
               style={{ 
                 color: 'var(--color-text-primary)',
-                marginBottom: subtext ? 'var(--spacing-md)' : bulletPoints ? 'var(--spacing-xl)' : '0',
+                marginBottom: subtext ? 'var(--spacing-md)' : bulletPoints ? 'var(--spacing-xl)' : image ? 'var(--spacing-xl)' : '0',
               }}
             >
               {headline}
@@ -84,7 +94,7 @@ export default function ContentStepLayout({
                   animationDelay: '0.1s', 
                   opacity: 0, 
                   animationFillMode: 'forwards',
-                  marginBottom: bulletPoints ? 'var(--spacing-xl)' : 'var(--spacing-lg)',
+                  marginBottom: bulletPoints ? 'var(--spacing-xl)' : image ? 'var(--spacing-xl)' : 'var(--spacing-lg)',
                 }}
               >
                 {subtext}
@@ -93,7 +103,10 @@ export default function ContentStepLayout({
             
             {/* Bullet Points */}
             {bulletPoints && bulletPoints.length > 0 && (
-              <div className="space-y-6 mb-6">
+              <div 
+                className="space-y-6" 
+                style={{ marginBottom: image ? 'var(--spacing-xl)' : 'var(--spacing-lg)' }}
+              >
                 {bulletPoints.map((point, index) => (
                   <div 
                     key={index} 
@@ -114,6 +127,41 @@ export default function ContentStepLayout({
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+            
+            {/* Image */}
+            {image && (
+              <div 
+                className="relative overflow-hidden animate-fade-in mx-auto"
+                style={{
+                  height: '300px',
+                  width: 'fit-content',
+                  maxWidth: '100%',
+                  borderRadius: 'var(--radius-xl)',
+                  ...(image.showBorder !== false && { border: '1px solid var(--color-secondary)' }),
+                  animationDelay: bulletPoints && bulletPoints.length > 0 
+                    ? `${0.1 + bulletPoints.length * 0.1}s` 
+                    : subtext 
+                    ? '0.2s' 
+                    : '0.1s',
+                  opacity: 0,
+                  animationFillMode: 'forwards',
+                  marginBottom: 'var(--spacing-lg)',
+                }}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={800}
+                  height={300}
+                  style={{
+                    width: 'auto',
+                    height: '300px',
+                    borderRadius: 'var(--radius-lg)',
+                  }}
+                  className="object-contain"
+                />
               </div>
             )}
           </div>

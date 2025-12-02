@@ -9,6 +9,11 @@ export default function MuslimTreehousePage() {
       totalSteps={15}
       headline="Muslim Treehouse"
       subtext="Weekly live Islamic sessions kids enjoy — free for your first month and easy to add."
+      image={{
+        src: "/images/ameen.png",
+        alt: "Muslim Treehouse",
+        showBorder: false
+      }}
       nextRoute="/challenges-program"
     />
   );

@@ -9,6 +9,10 @@ export default function HarvardScholarsPage() {
       totalSteps={15}
       headline="Designed at Harvard. Backed by Scholars."
       subtext="Built with real educational science. Reviewed and trusted by scholars and Muslim families worldwide."
+      image={{
+        src: "/hardvard_scholars.webp",
+        alt: "Harvard Scholars"
+      }}
       nextRoute="/fun"
     />
   );

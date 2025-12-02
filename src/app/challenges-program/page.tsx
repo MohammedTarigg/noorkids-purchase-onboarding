@@ -19,6 +19,10 @@ export default function ChallengesProgramPage() {
       totalSteps={15}
       headline={`Imagine ${displayName} in One Year…`}
       subtext="More confident, respectful, and connected to Allah. Little moments today become big changes."
+      image={{
+        src: "/images/books_bundle.jpg",
+        alt: "Books Bundle"
+      }}
       nextRoute="/social-proof"
     />
   );
