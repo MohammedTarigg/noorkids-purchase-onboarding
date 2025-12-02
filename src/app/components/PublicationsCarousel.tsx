@@ -36,11 +36,12 @@ export default function PublicationsCarousel() {
     <div className="w-full overflow-hidden" style={{ marginTop: 'var(--spacing-lg)' }}>
       {/* Label */}
       <p 
-        className="text-xs font-medium text-center mb-3"
+        className="text-xs font-medium text-center"
         style={{ 
           color: 'var(--color-text-light)',
           textTransform: 'uppercase',
           letterSpacing: '0.5px',
+          marginBottom: 'var(--spacing-md)',
         }}
       >
         Featured In

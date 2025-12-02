@@ -10,11 +10,10 @@ type AgeRange = {
 };
 
 const ageRanges: AgeRange[] = [
-  { id: '6-7', label: '6-7 years', minAge: 6, maxAge: 7 },
-  { id: '8-9', label: '8-9 years', minAge: 8, maxAge: 9 },
-  { id: '10-11', label: '10-11 years', minAge: 10, maxAge: 11 },
-  { id: '12-13', label: '12-13 years', minAge: 12, maxAge: 13 },
-  { id: '14+', label: '14+ years', minAge: 14, maxAge: 14 },
+  { id: '4-6', label: '4-6 years', minAge: 4, maxAge: 6 },
+  { id: '7-9', label: '7-9 years', minAge: 7, maxAge: 9 },
+  { id: '10-12', label: '10-12 years', minAge: 10, maxAge: 12 },
+  { id: '13+', label: '13+ years', minAge: 13, maxAge: 13 },
 ];
 
 export default function AgePage() {
@@ -36,7 +35,7 @@ export default function AgePage() {
   return (
     <QuestionStepLayout
       currentStep={2}
-      totalSteps={17}
+      totalSteps={18}
       headline="How old is your child?"
       options={ageRanges.map(range => ({
         id: range.id,

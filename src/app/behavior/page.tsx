@@ -48,15 +48,6 @@ const challenges = [
       </svg>
     ),
   },
-  {
-    id: 'other',
-    label: 'Other',
-    icon: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-      </svg>
-    ),
-  },
 ];
 
 export default function BehaviorPage() {
@@ -68,12 +59,12 @@ export default function BehaviorPage() {
   return (
     <QuestionStepLayout
       currentStep={3}
-      totalSteps={17}
+      totalSteps={18}
       headline="Which of these challenges do you face with your child?"
       options={challenges}
       selectionType="multi"
       onContinue={handleContinue}
-      nextRoute="/values"
+      nextRoute="/challenge-frequency"
       storageKey="challenges"
     />
   );

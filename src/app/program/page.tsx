@@ -24,13 +24,13 @@ export default function ProgramPage() {
           background: 'var(--color-bg)',
           paddingLeft: 'var(--spacing-md)',
           paddingRight: 'var(--spacing-md)',
-          paddingTop: 'calc(var(--spacing-sm) + 52px)',
-          paddingBottom: 'calc(var(--spacing-sm) + 80px)',
+          paddingTop: 'calc(var(--spacing-xs) + 52px)',
+          paddingBottom: 'calc(var(--spacing-xs) + 80px)',
         }}
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
           <div 
-            className="w-full animate-fade-in flex-1 flex flex-col justify-between gap-4"
+            className="w-full animate-fade-in flex flex-col gap-8"
             style={{
               backgroundColor: 'var(--color-bg-white)',
               borderRadius: 'var(--radius-2xl)',
@@ -38,16 +38,16 @@ export default function ProgramPage() {
             }}
           >
             {/* Hero Section */}
-            <div className="animate-slide-in">
-              <h1 className="text-2xl font-bold mb-3" style={{ color: 'var(--color-text-primary)' }}>
+            <div className="animate-slide-in flex flex-col gap-6">
+              <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
                 What is the Character-Building Program?
               </h1>
-              <p className="text-base mb-4" style={{ color: 'var(--color-text-secondary)' }}>
+              <p className="text-base mb-3" style={{ color: 'var(--color-text-secondary)' }}>
                 Monthly stories, activities, and lessons that teach Islamic values.
               </p>
               
               {/* Cards Section */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <FeatureCard
                   icon={
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)', strokeWidth: 2 }}>
@@ -82,7 +82,7 @@ export default function ProgramPage() {
 
             {/* Publications Carousel */}
             <div 
-              className="animate-slide-in"
+              className="animate-slide-in pb-4"
               style={{ 
                 animationDelay: '0.2s', 
                 opacity: 0, 

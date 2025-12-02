@@ -68,8 +68,8 @@ export default function ValuesPage() {
 
   return (
     <QuestionStepLayout
-      currentStep={4}
-      totalSteps={17}
+      currentStep={5}
+      totalSteps={18}
       headline="What values do you most want to instill in your child?"
       options={values}
       selectionType="multi"
