@@ -104,39 +104,48 @@ export default function AnalyzingStepLayout({
         }}
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col justify-between py-8">
-          {/* Header - Top */}
           <div 
-            className="text-center animate-fade-in"
+            className="w-full animate-fade-in"
             style={{
-              opacity: 0,
-              animationFillMode: 'forwards',
+              backgroundColor: 'var(--color-bg-white)',
+              borderRadius: 'var(--radius-2xl)',
+              padding: 'var(--spacing-md)',
             }}
           >
-            <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
-              {headline}
-            </h1>
-          </div>
-
-          {/* Content - Centered */}
-          <div className="flex-1 flex items-center justify-center my-8">
-            {typeof content === 'function' ? content() : content}
-          </div>
-
-          {/* Footer Text - Bottom */}
-          {footerText && (
+            {/* Header - Top */}
             <div 
               className="text-center animate-fade-in"
               style={{
-                animationDelay: '0.6s',
                 opacity: 0,
                 animationFillMode: 'forwards',
               }}
             >
-              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                {footerText}
-              </p>
+              <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+                {headline}
+              </h1>
             </div>
-          )}
+
+            {/* Content - Centered */}
+            <div className="flex-1 flex items-center justify-center my-8">
+              {typeof content === 'function' ? content() : content}
+            </div>
+
+            {/* Footer Text - Bottom */}
+            {footerText && (
+              <div 
+                className="text-center animate-fade-in"
+                style={{
+                  animationDelay: '0.6s',
+                  opacity: 0,
+                  animationFillMode: 'forwards',
+                }}
+              >
+                <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                  {footerText}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       
