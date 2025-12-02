@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Lottie from 'lottie-react';
 import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
+import giftAnimation from '../../../public/Gift.json';
 
 export default function StartTrialPage() {
   const router = useRouter();
@@ -66,6 +68,26 @@ export default function StartTrialPage() {
               Try your first month of the Character-Building Program for only 99¢.
             </p>
 
+            {/* Gift Animation */}
+            <div 
+              className="animate-slide-in flex justify-center"
+              style={{ 
+                animationDelay: '0.15s', 
+                opacity: 0, 
+                animationFillMode: 'forwards',
+                marginTop: 'var(--spacing-md)',
+                marginBottom: 'var(--spacing-md)',
+              }}
+            >
+              <div style={{ width: '315px', height: '280px', maxWidth: '100%' }}>
+                <Lottie 
+                  animationData={giftAnimation} 
+                  loop={false}
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </div>
+            </div>
+
             {/* Muslim Treehouse Checkbox Section */}
             <div 
               className="animate-slide-in"
@@ -73,14 +95,9 @@ export default function StartTrialPage() {
                 animationDelay: '0.2s', 
                 opacity: 0, 
                 animationFillMode: 'forwards',
-                marginTop: 'var(--spacing-xl)',
                 paddingTop: 'var(--spacing-lg)',
               }}
             >
-              <p className="text-base text-center" style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-lg)' }}>
-                You can also add a free first month of Muslim Treehouse if you&apos;d like.
-              </p>
-              
               {/* Enhanced Checkbox Container */}
               <div 
                 className="flex items-center gap-4 rounded-xl cursor-pointer transition-all duration-200"
