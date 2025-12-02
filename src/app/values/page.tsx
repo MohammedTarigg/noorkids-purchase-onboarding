@@ -59,14 +59,14 @@ export default function ValuesPage() {
 
   return (
     <QuestionStepLayout
-      currentStep={5}
-      totalSteps={18}
+      currentStep={6}
+      totalSteps={19}
       headline="What values do you most want to instill in your child?"
       options={values}
       selectionType="multi"
       maxSelections={3}
       onContinue={handleContinue}
-      nextRoute="/insights"
+      nextRoute="/parent-priorities"
       storageKey="values"
     />
   );

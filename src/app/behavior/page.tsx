@@ -59,7 +59,7 @@ export default function BehaviorPage() {
   return (
     <QuestionStepLayout
       currentStep={3}
-      totalSteps={18}
+      totalSteps={19}
       headline="Which of these challenges do you face with your child?"
       options={challenges}
       selectionType="multi"

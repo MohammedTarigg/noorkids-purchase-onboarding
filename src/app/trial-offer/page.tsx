@@ -41,7 +41,7 @@ export default function TrialOfferPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={18} totalSteps={18} />
+      <OnboardingHeader currentStep={21} totalSteps={19} />
       
       <div 
         className="min-h-screen flex flex-col" 

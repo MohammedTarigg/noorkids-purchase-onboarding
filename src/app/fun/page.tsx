@@ -32,8 +32,8 @@ const bulletPoints = [
 export default function FunPage() {
   return (
     <ContentStepLayout
-      currentStep={7}
-      totalSteps={17}
+      currentStep={10}
+      totalSteps={19}
       headline="Learning Islam Should Feel Fun — Not Like Homework"
       bulletPoints={bulletPoints}
       nextRoute="/values-program"

@@ -16,7 +16,7 @@ export default function ProgramPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={16} totalSteps={18} />
+      <OnboardingHeader currentStep={19} totalSteps={19} />
       
       <div 
         className="min-h-screen flex flex-col" 

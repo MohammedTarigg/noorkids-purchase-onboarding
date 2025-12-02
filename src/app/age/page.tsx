@@ -19,29 +19,38 @@ const ageRanges: AgeRange[] = [
 export default function AgePage() {
   const handleContinue = (selectedIds: string[]) => {
     if (selectedIds.length > 0) {
-      const selectedId = selectedIds[0];
-      const selectedRange = ageRanges.find(range => range.id === selectedId);
+      // Store all selected age ranges
+      const selectedAges = selectedIds.map(selectedId => {
+        const selectedRange = ageRanges.find(range => range.id === selectedId);
+        if (selectedRange) {
+          // Calculate the middle age of the range (or minAge for 13+)
+          return selectedRange.maxAge === selectedRange.minAge 
+            ? selectedRange.minAge 
+            : Math.floor((selectedRange.minAge + selectedRange.maxAge) / 2);
+        }
+        return null;
+      }).filter((age): age is number => age !== null);
       
-      if (selectedRange) {
-        // Store the middle age of the range (or minAge for 14+)
-        const ageToStore = selectedRange.maxAge === selectedRange.minAge 
-          ? selectedRange.minAge 
-          : Math.floor((selectedRange.minAge + selectedRange.maxAge) / 2);
-        sessionStorage.setItem('childAge', ageToStore.toString());
+      // Store the first age as the primary age (for backward compatibility)
+      if (selectedAges.length > 0) {
+        sessionStorage.setItem('childAge', selectedAges[0].toString());
       }
+      
+      // Also store all ages as an array
+      sessionStorage.setItem('childAges', JSON.stringify(selectedAges));
     }
   };
 
   return (
     <QuestionStepLayout
       currentStep={2}
-      totalSteps={18}
+      totalSteps={19}
       headline="How old is your child?"
       options={ageRanges.map(range => ({
         id: range.id,
         label: range.label,
       }))}
-      selectionType="single"
+      selectionType="multi"
       onContinue={handleContinue}
       nextRoute="/behavior"
     />

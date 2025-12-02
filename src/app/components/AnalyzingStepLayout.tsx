@@ -9,7 +9,7 @@ interface AnalyzingStepLayoutProps {
   currentStep: number;
   totalSteps: number;
   loadingDuration?: number; // Duration in milliseconds
-  headline: string;
+  headline?: string; // Optional headline
   content: ReactNode | (() => ReactNode); // The content to show after loading (insight card, etc.)
   footerText?: string; // Optional text below content
   onAnalyze?: () => void | Promise<void>; // Optional async function to run during analysis
@@ -135,18 +135,20 @@ export default function AnalyzingStepLayout({
       >
         <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
           {/* Header - Top */}
-          <div 
-            className="text-center animate-fade-in"
-            style={{
-              opacity: 0,
-              animationFillMode: 'forwards',
-              marginBottom: 'var(--spacing-xl)',
-            }}
-          >
-            <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
-              {headline}
-            </h1>
-          </div>
+          {headline && (
+            <div 
+              className="text-center animate-fade-in"
+              style={{
+                opacity: 0,
+                animationFillMode: 'forwards',
+                marginBottom: 'var(--spacing-xl)',
+              }}
+            >
+              <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+                {headline}
+              </h1>
+            </div>
+          )}
 
           {/* Content Card - Centered */}
           <div className="flex-1 flex items-center justify-center">

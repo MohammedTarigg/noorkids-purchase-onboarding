@@ -31,12 +31,12 @@ export default function ChallengeFrequencyPage() {
   return (
     <QuestionStepLayout
       currentStep={4}
-      totalSteps={18}
+      totalSteps={19}
       headline="Roughly how often do you notice these challenges?"
       options={frequencyOptions}
       selectionType="single"
       onContinue={handleContinue}
-      nextRoute="/values"
+      nextRoute="/family-impact"
       storageKey="challengeFrequency"
     />
   );

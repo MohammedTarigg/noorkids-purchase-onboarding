@@ -32,8 +32,8 @@ const bulletPoints = [
 export default function CurriculumPage() {
   return (
     <ContentStepLayout
-      currentStep={10}
-      totalSteps={17}
+      currentStep={13}
+      totalSteps={19}
       headline="Created at Harvard. Backed by Scholars. Loved by Parents."
       bulletPoints={bulletPoints}
       nextRoute="/monthly-magic"

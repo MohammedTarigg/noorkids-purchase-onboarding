@@ -66,7 +66,7 @@ export default function SocialProofPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={15} totalSteps={17} />
+      <OnboardingHeader currentStep={18} totalSteps={19} />
       
       <div 
         className="min-h-screen flex flex-col" 

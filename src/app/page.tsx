@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import OnboardingHeader from './components/OnboardingHeader';
 import CTAButton from './components/CTAButton';
+import PublicationsCarousel from './components/PublicationsCarousel';
 
 export default function WelcomePage() {
   const router = useRouter();
@@ -14,19 +14,28 @@ export default function WelcomePage() {
   
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={1} totalSteps={18} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 
           background: 'var(--color-bg)',
           paddingLeft: 'var(--spacing-md)',
           paddingRight: 'var(--spacing-md)',
-          paddingTop: 'calc(var(--spacing-sm) + 52px)', // Add space for fixed header
+          paddingTop: 'var(--spacing-xl)',
           paddingBottom: 'calc(var(--spacing-sm) + 80px)', // Add space for sticky footer
         }}
       >
+        {/* Logo */}
+        <div className="w-full max-w-2xl mx-auto mb-6 flex justify-center">
+          <div className="relative" style={{ width: '250px', height: '80px' }}>
+            <Image
+              src="/images/noorkids_logo.png"
+              alt="Noor Kids"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+        
         <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
           {/* Main Content Card */}
         <div 
@@ -69,6 +78,11 @@ export default function WelcomePage() {
           <p className="text-xs" style={{ color: 'var(--color-text-light)' }}>
             ✨ Trusted by 952+ parents worldwide
           </p>
+        </div>
+        
+        {/* Publications Carousel */}
+        <div className="w-full max-w-2xl mx-auto mt-6">
+          <PublicationsCarousel />
         </div>
       </div>
       

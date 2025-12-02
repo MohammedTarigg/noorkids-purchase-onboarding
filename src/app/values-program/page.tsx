@@ -31,8 +31,8 @@ export default function ValuesProgramPage() {
 
   return (
     <ContentStepLayout
-      currentStep={8}
-      totalSteps={17}
+      currentStep={11}
+      totalSteps={19}
       headline={`Helps Build Values Like: ${formattedValues}`}
       subtext="Each month's book focuses on one character trait through stories children remember."
       nextRoute="/challenges-program"
