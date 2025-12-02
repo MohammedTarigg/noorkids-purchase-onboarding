@@ -82,7 +82,12 @@ export default function CTAButton({
   let finalBoxShadow = '';
   let finalTextColor = textColor;
   
-  if (backgroundColor) {
+  // If disabled, use grey background regardless of other settings
+  if (disabled) {
+    finalBackgroundColor = '#D1D5DB'; // Grey color for disabled state
+    finalBoxShadow = '';
+    finalTextColor = '#9CA3AF'; // Lighter grey text
+  } else if (backgroundColor) {
     // Custom background provided - use it with custom shadow if selected, otherwise default shadow
     if (selected) {
       finalBoxShadow = 'inset 0 0 0 var(--button-border-width) rgb(var(--color-button-border))';

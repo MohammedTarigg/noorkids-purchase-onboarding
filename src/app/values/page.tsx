@@ -1,18 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import OnboardingHeader from '../components/OnboardingHeader';
-import OptionButton from '../components/OptionButton';
-import CTAButton from '../components/CTAButton';
+import QuestionStepLayout from '../components/QuestionStepLayout';
 
-type Value = {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-};
-
-const values: Value[] = [
+const values = [
   {
     id: 'honesty',
     label: 'Honesty',
@@ -70,109 +60,23 @@ const values: Value[] = [
 ];
 
 export default function ValuesPage() {
-  const router = useRouter();
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const MAX_SELECTIONS = 3;
-  
-  const toggleValue = (id: string) => {
-    setSelectedValues(prev => {
-      if (prev.includes(id)) {
-        return prev.filter(v => v !== id);
-      } else if (prev.length < MAX_SELECTIONS) {
-        return [...prev, id];
-      }
-      return prev;
-    });
+  // Storage and navigation are handled by the wrapper
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleContinue = (_selectedIds: string[]) => {
+    // Storage is handled by the wrapper via storageKey prop
   };
-  
-  const handleContinue = () => {
-    if (selectedValues.length > 0) {
-      sessionStorage.setItem('values', JSON.stringify(selectedValues));
-      router.push('/insights');
-    }
-  };
-  
+
   return (
-    <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={4} totalSteps={15} />
-      
-      <div 
-        className="min-h-screen flex flex-col" 
-        style={{ 
-          background: 'var(--color-bg)',
-          paddingLeft: 'var(--spacing-md)',
-          paddingRight: 'var(--spacing-md)',
-          paddingTop: 'calc(var(--spacing-sm) + 52px)',
-          paddingBottom: 'calc(var(--spacing-sm) + 80px)',
-        }}
-      >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
-          <div 
-            className="w-full animate-fade-in"
-            style={{
-              backgroundColor: 'var(--color-bg-white)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--spacing-md)',
-            }}
-          >
-          {/* Headline */}
-          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
-            What values do you most want to instill in your child?
-          </h1>
-          
-          {/* Options - One per row */}
-          <div 
-            className="mt-8"
-            style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--spacing-md)',
-            }}
-          >
-            {values.map((value, index) => (
-              <div
-                key={value.id}
-                className="animate-slide-in"
-                style={{
-                  animationDelay: `${0.2 + index * 0.05}s`,
-                  opacity: 0,
-                  animationFillMode: 'forwards'
-                }}
-              >
-                <OptionButton
-                  icon={value.icon}
-                  label={value.label}
-                  selected={selectedValues.includes(value.id)}
-                  onClick={() => toggleValue(value.id)}
-                />
-              </div>
-            ))}
-          </div>
-          </div>
-        </div>
-        
-       
-      </div>
-      
-      {/* Sticky Footer with CTA Button */}
-      <footer 
-        className="fixed bottom-0 left-0 right-0 z-40"
-        style={{
-          backgroundColor: 'var(--color-bg-white)',
-          padding: 'var(--spacing-md)',
-          borderTop: '1px solid var(--color-bg-alt)',
-        }}
-      >
-        <div className="max-w-2xl mx-auto">
-          <CTAButton 
-            onClick={handleContinue}
-            disabled={selectedValues.length === 0}
-          >
-            Continue
-          </CTAButton>
-        </div>
-      </footer>
-    </>
+    <QuestionStepLayout
+      currentStep={4}
+      totalSteps={15}
+      headline="What values do you most want to instill in your child?"
+      options={values}
+      selectionType="multi"
+      maxSelections={3}
+      onContinue={handleContinue}
+      nextRoute="/insights"
+      storageKey="values"
+    />
   );
 }

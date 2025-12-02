@@ -195,7 +195,6 @@ button:disabled {
 }
 
 .button-3d--disabled {
-  opacity: 0.5;
   cursor: not-allowed;
   transform: scale(1) !important;
 }

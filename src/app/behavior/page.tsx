@@ -1,18 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import OnboardingHeader from '../components/OnboardingHeader';
-import OptionButton from '../components/OptionButton';
-import CTAButton from '../components/CTAButton';
+import QuestionStepLayout from '../components/QuestionStepLayout';
 
-type Challenge = {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-};
-
-const challenges: Challenge[] = [
+const challenges = [
   {
     id: 'disrespect',
     label: 'Disrespect / Not listening',
@@ -70,104 +60,21 @@ const challenges: Challenge[] = [
 ];
 
 export default function BehaviorPage() {
-  const router = useRouter();
-  const [selectedChallenges, setSelectedChallenges] = useState<string[]>([]);
-  
-  const toggleChallenge = (id: string) => {
-    setSelectedChallenges(prev => 
-      prev.includes(id) 
-        ? prev.filter(c => c !== id)
-        : [...prev, id]
-    );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleContinue = (_selectedIds: string[]) => {
+    // Storage is handled by the wrapper via storageKey prop
   };
-  
-  const handleContinue = () => {
-    if (selectedChallenges.length > 0) {
-      sessionStorage.setItem('challenges', JSON.stringify(selectedChallenges));
-      router.push('/values');
-    }
-  };
-  
+
   return (
-    <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={3} totalSteps={15} />
-      
-      <div 
-        className="min-h-screen flex flex-col" 
-        style={{ 
-          background: 'var(--color-bg)',
-          paddingLeft: 'var(--spacing-md)',
-          paddingRight: 'var(--spacing-md)',
-          paddingTop: 'calc(var(--spacing-sm) + 52px)',
-          paddingBottom: 'calc(var(--spacing-sm) + 80px)',
-        }}
-      >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-start">
-          <div 
-            className="w-full animate-fade-in"
-            style={{
-              backgroundColor: 'var(--color-bg-white)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--spacing-md)',
-            }}
-          >
-          {/* Headline */}
-          <h1 className="text-2xl font-bold mb-3 animate-slide-in text-left" style={{ color: 'var(--color-text-primary)' }}>
-            Which of these challenges do you face with your child?
-          </h1>
-          
-          {/* Options - One per row */}
-          <div 
-            className="mt-8"
-            style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--spacing-md)',
-            }}
-          >
-            {challenges.map((challenge, index) => (
-              <div 
-                key={challenge.id}
-                className="animate-slide-in"
-                style={{ 
-                  animationDelay: `${0.2 + index * 0.05}s`,
-                  opacity: 0,
-                  animationFillMode: 'forwards'
-                }}
-              >
-                <OptionButton
-                  icon={challenge.icon}
-                  label={challenge.label}
-                  selected={selectedChallenges.includes(challenge.id)}
-                  onClick={() => toggleChallenge(challenge.id)}
-                />
-              </div>
-            ))}
-          </div>
-          </div>
-        </div>
-    
-      </div>
-      
-      {/* Sticky Footer with CTA Button */}
-      <footer 
-        className="fixed bottom-0 left-0 right-0 z-40"
-        style={{
-          backgroundColor: 'var(--color-bg-white)',
-          padding: 'var(--spacing-md)',
-          borderTop: '1px solid var(--color-bg-alt)',
-        }}
-      >
-        <div className="max-w-2xl mx-auto">
-          <CTAButton 
-            onClick={handleContinue}
-            disabled={selectedChallenges.length === 0}
-          >
-            Continue
-          </CTAButton>
-        </div>
-      </footer>
-    </>
+    <QuestionStepLayout
+      currentStep={3}
+      totalSteps={15}
+      headline="Which of these challenges do you face with your child?"
+      options={challenges}
+      selectionType="multi"
+      onContinue={handleContinue}
+      nextRoute="/values"
+      storageKey="challenges"
+    />
   );
 }
