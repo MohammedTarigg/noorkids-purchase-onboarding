@@ -51,7 +51,7 @@ export default function InsightsPage() {
   return (
     <AnalyzingStepLayout
       currentStep={5}
-      totalSteps={15}
+      totalSteps={17}
       loadingDuration={3000}
       headline="Your Parenting Insights"
       content={getInsightContent}

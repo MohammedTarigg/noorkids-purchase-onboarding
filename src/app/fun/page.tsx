@@ -33,7 +33,7 @@ export default function FunPage() {
   return (
     <ContentStepLayout
       currentStep={7}
-      totalSteps={15}
+      totalSteps={17}
       headline="Learning Islam Should Feel Fun — Not Like Homework"
       bulletPoints={bulletPoints}
       nextRoute="/values-program"

@@ -40,8 +40,8 @@ const bulletPoints = [
 export default function ImaginePage() {
   return (
     <ContentStepLayout
-      currentStep={12}
-      totalSteps={15}
+      currentStep={14}
+      totalSteps={17}
       headline="Imagine Your Child Growing Into…"
       bulletPoints={bulletPoints}
       nextRoute="/social-proof"

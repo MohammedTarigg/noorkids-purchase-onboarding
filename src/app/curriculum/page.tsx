@@ -33,7 +33,7 @@ export default function CurriculumPage() {
   return (
     <ContentStepLayout
       currentStep={10}
-      totalSteps={15}
+      totalSteps={17}
       headline="Created at Harvard. Backed by Scholars. Loved by Parents."
       bulletPoints={bulletPoints}
       nextRoute="/monthly-magic"

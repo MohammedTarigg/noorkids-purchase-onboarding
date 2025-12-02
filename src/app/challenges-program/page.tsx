@@ -33,7 +33,7 @@ export default function ChallengesProgramPage() {
   return (
     <ContentStepLayout
       currentStep={9}
-      totalSteps={15}
+      totalSteps={17}
       headline={`Designed to Gently Correct Behaviors Like: ${formattedChallenges}`}
       subtext="Kids learn through stories — not lectures. Our stories plant the right habits naturally."
       nextRoute="/curriculum"

@@ -36,7 +36,7 @@ export default function AgePage() {
   return (
     <QuestionStepLayout
       currentStep={2}
-      totalSteps={15}
+      totalSteps={17}
       headline="How old is your child?"
       options={ageRanges.map(range => ({
         id: range.id,

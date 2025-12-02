@@ -24,7 +24,7 @@ export default function PersonalizedProgramPage() {
   return (
     <ContentStepLayout
       currentStep={6}
-      totalSteps={15}
+      totalSteps={17}
       headline={`Built For ${displayAge}-Year-Olds Like ${displayName}`}
       subtext="Based on what you shared, here's a program designed specifically for your child's age and needs."
       nextRoute="/fun"

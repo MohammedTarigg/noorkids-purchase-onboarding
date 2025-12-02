@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -13,38 +14,45 @@ type Testimonial = {
   username: string;
   initial: string;
   text: string;
+  stars: number;
 };
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Maria',
-    username: '@maria_s',
+    name: 'Musa Gedda',
+    username: '@musa_gedda',
     initial: 'M',
-    text: 'My kids picked up manners they weren\'t learning anywhere else… The books made Islamic learning fun.'
+    text: 'Great 👍 for our kids',
+    stars: 5
   },
   {
-    name: 'Amina',
-    username: '@amina_uk',
+    name: 'Bushra',
+    username: '@bushra',
+    initial: 'B',
+    text: 'It\'s wonderful experience. Thanks Noor kids team',
+    stars: 5
+  },
+  {
+    name: 'Madiha',
+    username: '@madiha',
+    initial: 'M',
+    text: 'My kindergartner looks forward to receiving our monthly Noor Kids book! He enjoys the format the characters and the stories.',
+    stars: 5
+  },
+  {
+    name: 'Malahat Afzal',
+    username: '@malahat_afzal',
+    initial: 'M',
+    text: 'My kids love Noor Kids. They watched the summer program before and they both are enjoying the books now!',
+    stars: 5
+  },
+
+  {
+    name: 'Aleq Jaffery',
+    username: '@aleq_jaffery',
     initial: 'A',
-    text: 'My kids have learned behavior skills and manners they would not have otherwise.'
-  },
-  {
-    name: 'Yusuf',
-    username: '@yusuf_family',
-    initial: 'Y',
-    text: 'My daughter now understands the importance of honesty and kindness through these stories.'
-  },
-  {
-    name: 'Fatima',
-    username: '@fatima_mom',
-    initial: 'F',
-    text: 'As a busy parent, I love how these books make teaching Islamic values so easy.'
-  },
-  {
-    name: 'Ahmed',
-    username: '@ahmed_dad',
-    initial: 'A',
-    text: 'I\'ve seen my son\'s confidence and character improve significantly since we started.'
+    text: 'Concepts are simple enough for small kids and older ones have fun with the activities. I\'m grateful to have found this resource.',
+    stars: 5
   }
 ];
 
@@ -58,7 +66,7 @@ export default function SocialProofPage() {
   return (
     <>
       {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={13} totalSteps={15} />
+      <OnboardingHeader currentStep={15} totalSteps={17} />
       
       <div 
         className="min-h-screen flex flex-col" 
@@ -70,9 +78,9 @@ export default function SocialProofPage() {
           paddingBottom: 'calc(var(--spacing-sm) + 80px)',
         }}
       >
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto flex-1 flex flex-col">
           <div 
-            className="w-full animate-fade-in"
+            className="w-full animate-fade-in flex-1 flex flex-col justify-between gap-4"
             style={{
               backgroundColor: 'var(--color-bg-white)',
               borderRadius: 'var(--radius-2xl)',
@@ -80,13 +88,151 @@ export default function SocialProofPage() {
             }}
           >
             {/* Headline */}
-            <h1 className="text-2xl font-bold mb-8 animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
-              Parents Are Seeing Real Change
+            <h1 className="text-2xl font-bold animate-slide-in text-center" style={{ color: 'var(--color-text-primary)' }}>
+              Kid tested, scholar approved.
             </h1>
             
+            {/* Overall Rating */}
+            <div 
+              className="text-center animate-fade-in"
+              style={{
+                animationDelay: '0.1s',
+                opacity: 0,
+                animationFillMode: 'forwards',
+              }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-3xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+                  4.84
+                </span>
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map(i => (
+                    <svg 
+                      key={i} 
+                      className="w-5 h-5" 
+                      viewBox="0 0 24 24" 
+                      style={{ 
+                        color: i <= 4.84 ? '#FCD34D' : '#E5E7EB',
+                        fill: i <= 4.84 ? 'currentColor' : 'none',
+                        stroke: i <= 4.84 ? 'none' : 'currentColor',
+                        strokeWidth: 1.5
+                      }}
+                    >
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-lg font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+                  out of 5
+                </span>
+              </div>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                Based on 952 reviews
+              </p>
+            </div>
+            
+            {/* Scholar Testimonials Section */}
+            <div className="w-full">
+              <div className="flex flex-col gap-6">
+                {/* Omar Suleiman */}
+                <div 
+                  className="rounded-lg overflow-hidden animate-fade-in"
+                  style={{
+                    backgroundColor: 'var(--color-bg-alt)',
+                    padding: 'var(--spacing-sm)',
+                    animationDelay: '0.2s',
+                    opacity: 0,
+                    animationFillMode: 'forwards',
+                  }}
+                >
+                  <div className="flex gap-3 items-start">
+                    <div className="shrink-0">
+                      <div 
+                        className="relative rounded-full overflow-hidden"
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                        }}
+                      >
+                        <Image
+                          src="/sh-omar-suleiman.webp"
+                          alt="Shaykh Omar Suleiman"
+                          width={48}
+                          height={48}
+                          className="object-cover"
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <h3 className="font-bold text-sm mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
+                        Omar Suleiman
+                      </h3>
+                      <p className="text-xs mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+                        Shaykh Omar Suleiman, Yaqeen Institute
+                      </p>
+                      <p className="text-sm leading-relaxed italic" style={{ color: 'var(--color-text-primary)', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                        &quot;My kids and I love Noor Kids. It is one of the best resources for Muslim Kids.&quot;
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Rania Awaad */}
+                <div 
+                  className="rounded-lg overflow-hidden animate-fade-in"
+                  style={{
+                    backgroundColor: 'var(--color-bg-alt)',
+                    padding: 'var(--spacing-sm)',
+                    animationDelay: '0.3s',
+                    opacity: 0,
+                    animationFillMode: 'forwards',
+                  }}
+                >
+                  <div className="flex gap-3 items-start">
+                    <div className="shrink-0">
+                      <div 
+                        className="relative rounded-full overflow-hidden"
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                        }}
+                      >
+                        <Image
+                          src="/rania-awaad.avif"
+                          alt="Ust. Rania Awaad, MD"
+                          width={48}
+                          height={48}
+                          className="object-cover"
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <h3 className="font-bold text-sm mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
+                        Ust. Rania Awaad, MD
+                      </h3>
+                      <p className="text-xs mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+                        Psychiatrist & Islamic Scholar
+                      </p>
+                      <p className="text-sm leading-relaxed italic" style={{ color: 'var(--color-text-primary)', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                        &quot;Noor Kids helps kids build a love for Allah and our Prophet. My children look forward to receiving Noor Kids each month.&quot;
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             {/* Testimonials Carousel */}
-            <div className="mb-6">
-              <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-bg-white)', border: '1px solid #D1D5DB', padding: '24px' }}>
+            <div className="w-full">
+              <div className="rounded-lg overflow-hidden" style={{ backgroundColor: 'var(--color-bg-white)', border: '1px solid #D1D5DB', padding: 'var(--spacing-md)' }}>
                 <Swiper
                   modules={[Autoplay, Pagination]}
                   spaceBetween={0}
@@ -110,21 +256,21 @@ export default function SocialProofPage() {
                     <SwiperSlide key={index} style={{ width: '100%', flexShrink: 0 }}>
                       <div style={{ width: '100%' }}>
                         {/* Header with Avatar, Name, and Stars */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex items-center gap-3">
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-center gap-2">
                             {/* Avatar */}
                             <div 
-                              className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-bold text-lg"
+                              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold text-sm"
                               style={{ backgroundColor: '#FEF3C7', color: '#F59E0B' }}
                             >
                               {testimonial.initial}
                             </div>
                             {/* Name and Username */}
                             <div>
-                              <p className="font-bold text-base mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
+                              <p className="font-bold text-sm mb-0.5" style={{ color: 'var(--color-text-primary)' }}>
                                 {testimonial.name}
                               </p>
-                              <p className="text-sm" style={{ color: 'var(--color-text-light)' }}>
+                              <p className="text-xs" style={{ color: 'var(--color-text-light)' }}>
                                 {testimonial.username}
                               </p>
                             </div>
@@ -132,14 +278,24 @@ export default function SocialProofPage() {
                           {/* Stars */}
                           <div className="flex gap-0.5 shrink-0">
                             {[1,2,3,4,5].map(i => (
-                              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" style={{ color: '#FCD34D' }}>
+                              <svg 
+                                key={i} 
+                                className="w-4 h-4" 
+                                viewBox="0 0 24 24" 
+                                style={{ 
+                                  color: i <= testimonial.stars ? '#FCD34D' : '#E5E7EB',
+                                  fill: i <= testimonial.stars ? 'currentColor' : 'none',
+                                  stroke: i <= testimonial.stars ? 'none' : 'currentColor',
+                                  strokeWidth: 1.5
+                                }}
+                              >
                                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                               </svg>
                             ))}
                           </div>
                         </div>
                         {/* Testimonial Text */}
-                        <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
+                        <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
                           {testimonial.text}
                         </p>
                       </div>
@@ -148,7 +304,7 @@ export default function SocialProofPage() {
                 </Swiper>
                 
                 {/* Pagination Dots */}
-                <div className="flex items-center justify-center mt-6">
+                <div className="flex items-center justify-center mt-4">
                   <div className="swiper-pagination-custom"></div>
                 </div>
               </div>
