@@ -56,7 +56,7 @@ export default function WelcomePage() {
             }}
           >
             <Image
-              src="/welcome.webp"
+              src="/images/landing.png"
               alt="Personalize Your Child's Journey"
               fill
               className="object-contain"

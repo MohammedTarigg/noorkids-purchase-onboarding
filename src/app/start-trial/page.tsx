@@ -14,9 +14,9 @@ export default function StartTrialPage() {
   const [addMuslimTreehouse, setAddMuslimTreehouse] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = sessionStorage.getItem('addMuslimTreehouse');
-      return saved === 'true';
+      return saved !== null ? saved === 'true' : true;
     }
-    return false;
+    return true;
   });
 
   // Save state to sessionStorage when it changes
@@ -27,7 +27,7 @@ export default function StartTrialPage() {
   }, [addMuslimTreehouse]);
 
   const handleContinue = () => {
-    router.push('/trial-offer');
+    router.push('/transparency');
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

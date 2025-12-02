@@ -9,7 +9,7 @@ export default function ProgramPage() {
   const router = useRouter();
 
   const handleContinue = () => {
-    router.push('/trial-offer');
+    router.push('/trial');
   };
 
   return null;
