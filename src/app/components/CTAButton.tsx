@@ -10,6 +10,7 @@ interface CTAButtonProps {
   className?: string;
   type?: 'button' | 'submit';
   showShadow?: boolean;
+  showElevation?: boolean; // New: controls 3D elevation effect (default: true)
   // Customizable styling props
   borderRadius?: string;
   width?: string;
@@ -30,6 +31,7 @@ export default function CTAButton({
   className = '',
   type = 'button',
   showShadow = false,
+  showElevation = true,
   borderRadius,
   width,
   minHeight,
@@ -84,43 +86,62 @@ export default function CTAButton({
   let finalTextColor = textColor;
   let finalTransform = '';
   
-  // Elevation shadow values - matching ContentStepLayout image elevation
+  // Elevation shadow values - matching ContentStepLayout image elevation (only when showElevation is true)
   const elevationShadow = isPressed 
     ? '2px 2px 0 0 var(--color-secondary-dark), 0 2px 0 0 var(--color-secondary-dark)' // Reduced shadow when pressed
     : '4px 4px 0 0 var(--color-secondary-dark), 0 4px 0 0 var(--color-secondary-dark)'; // Full elevation
   
-  // Transform for press animation
-  finalTransform = isPressed ? 'translate(2px, 2px)' : 'translate(0, 0)';
+  // Previous design: inset box-shadow (when showElevation is false)
+  const insetShadow = 'inset 0 0 0 var(--button-border-width) rgb(var(--color-button-border))';
+  
+  // Transform for press animation (only when showElevation is true)
+  finalTransform = (showElevation && isPressed) ? 'translate(2px, 2px)' : 'translate(0, 0)';
   
   // If disabled, use grey background regardless of other settings
   if (disabled) {
     finalBackgroundColor = '#D1D5DB'; // Grey color for disabled state
     finalBoxShadow = '';
-    finalBorder = '1px solid #9CA3AF';
+    finalBorder = showElevation ? '1px solid #9CA3AF' : '';
     finalTextColor = '#9CA3AF'; // Lighter grey text
     finalTransform = 'translate(0, 0)'; // No press animation when disabled
   } else if (backgroundColor) {
-    // Custom background provided - use it with custom shadow if selected, otherwise elevation shadow
+    // Custom background provided
     if (selected) {
-      finalBorder = '1px solid var(--color-secondary-dark)';
-      finalBoxShadow = elevationShadow;
+      if (showElevation) {
+        finalBorder = '1px solid var(--color-secondary-dark)';
+        finalBoxShadow = elevationShadow;
+      } else {
+        finalBoxShadow = insetShadow;
+      }
     } else {
-      finalBorder = '1px solid var(--color-secondary-dark)';
-      finalBoxShadow = showShadow ? elevationShadow : '';
+      if (showElevation) {
+        finalBorder = '1px solid var(--color-secondary-dark)';
+        finalBoxShadow = showShadow ? elevationShadow : '';
+      } else {
+        finalBoxShadow = showShadow ? '0 1px 2px rgba(239, 239, 239, 0.078)' : '';
+      }
     }
   } else {
-    // No custom background - use defaults with elevation
+    // No custom background - use defaults
     if (selected) {
       // Selected state (for age buttons)
       finalBackgroundColor = 'var(--color-cta)';
-      finalBorder = '1px solid var(--color-secondary-dark)';
-      finalBoxShadow = elevationShadow;
+      if (showElevation) {
+        finalBorder = '1px solid var(--color-secondary-dark)';
+        finalBoxShadow = elevationShadow;
+      } else {
+        finalBoxShadow = insetShadow;
+      }
       finalTextColor = finalTextColor || 'black';
     } else if (variant === 'primary') {
-      // Default primary variant with elevation
+      // Default primary variant
       finalBackgroundColor = 'var(--color-cta)';
-      finalBorder = '1px solid var(--color-secondary-dark)';
-      finalBoxShadow = elevationShadow;
+      if (showElevation) {
+        finalBorder = '1px solid var(--color-secondary-dark)';
+        finalBoxShadow = elevationShadow;
+      } else {
+        finalBoxShadow = insetShadow;
+      }
       finalTextColor = finalTextColor || 'black';
     }
   }

@@ -24,6 +24,7 @@ export default function OptionButton({ label, selected, onClick, icon }: OptionB
       selected={selected}
       showShadow={!selected}
       textAlign="left"
+      showElevation={false}
     >
       <div className="flex items-center gap-4 w-full">
         {icon && (
