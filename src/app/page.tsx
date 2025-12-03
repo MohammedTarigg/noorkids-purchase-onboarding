@@ -14,19 +14,26 @@ export default function WelcomePage() {
   
   return (
     <>
+      {/* Custom layout for WelcomePage - allows full-width image */}
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 
           background: 'var(--color-bg)',
-          paddingLeft: 'var(--spacing-md)',
-          paddingRight: 'var(--spacing-md)',
-          paddingTop: 'var(--spacing-xl)',
           paddingBottom: 'calc(var(--spacing-sm) + 80px)', // Add space for sticky footer
         }}
       >
-        {/* Logo */}
-        <div className="w-full max-w-2xl mx-auto mb-6 flex justify-center">
-          <div className="relative" style={{ width: '250px', height: '80px' }}>
+        {/* Logo Header - height 90px with padding to center logo */}
+        <div 
+          className="flex justify-center items-center"
+          style={{
+            height: '90px',
+            paddingTop: '19px',
+            paddingBottom: '19px',
+            paddingLeft: 'var(--spacing-md)',
+            paddingRight: 'var(--spacing-md)',
+          }}
+        >
+          <div className="relative" style={{ width: '104px', height: '52px' }}>
             <Image
               src="/images/noorkids_logo.png"
               alt="Noor Kids"
@@ -36,52 +43,60 @@ export default function WelcomePage() {
           </div>
         </div>
         
-        <div className="w-full max-w-2xl mx-auto flex-1 flex items-center justify-center">
-          {/* Main Content Card */}
-        <div 
-          className="animate-fade-in w-full"
-          style={{
-            backgroundColor: 'var(--color-bg-white)',
-            borderRadius: 'var(--radius-2xl)',
-            padding: 'var(--spacing-md)',
-          }}
-        >
-          {/* Hero Image */}
+        {/* Main content area - no top spacing */}
+        <div className="flex flex-col items-center">
+          {/* Hero Image Stack - FULL WIDTH with overlay text */}
           <div 
-            className="relative rounded-2xl overflow-hidden" 
+            className="relative w-full overflow-hidden animate-fade-in" 
             style={{ 
-              height: '240px', 
-              borderRadius: 'var(--radius-lg)',
-              marginBottom: 'var(--spacing-md)',
+              height: '480px',
             }}
           >
+            {/* Background Image */}
             <Image
               src="/images/landing.png"
               alt="Personalize Your Child's Journey"
               fill
-              className="object-contain"
+              className="object-cover"
+              priority
+            />
+            
+            {/* Gradient Overlay - Bottom to Top */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
               style={{
-                borderRadius: 'var(--radius-lg)',
+                background: 'linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%)',
               }}
             />
-          </div>
-          
-          {/* Headline */}
-          <h1 className="text-2xl font-bold mb-2 text-center animate-slide-in" style={{ color: 'var(--color-text-primary)' }}>
-            Help your child grow into a confident, kind Muslim.
-          </h1>
+            
+            {/* Headline Overlay */}
+            <div 
+              className="absolute inset-x-0 bottom-0 flex items-end justify-center"
+              style={{
+                paddingLeft: 'var(--spacing-md)',
+                paddingRight: 'var(--spacing-md)',
+                paddingBottom: 'var(--spacing-xl)',
+              }}
+            >
+              <h1 
+                className="text-2xl font-bold text-center animate-slide-in max-w-2xl" 
+                style={{ color: '#ffffff' }}
+              >
+                Let&apos;s stop forcing islam and start inspiring it
+              </h1>
+            </div>
           </div>
         </div>
         
-        {/* Trust Badge */}
-        <div className="mt-3 text-center animate-fade-in" style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}>
-          <p className="text-xs" style={{ color: 'var(--color-text-light)' }}>
-            ✨ Trusted by 952+ parents worldwide
-          </p>
-        </div>
-        
-        {/* Publications Carousel */}
-        <div className="w-full max-w-2xl mx-auto mt-6">
+        {/* Publications Carousel - with horizontal padding */}
+        <div 
+          className="w-full max-w-2xl mx-auto"
+          style={{
+            marginTop: 'var(--spacing-lg)',
+            paddingLeft: 'var(--spacing-md)',
+            paddingRight: 'var(--spacing-md)',
+          }}
+        >
           <PublicationsCarousel />
         </div>
       </div>

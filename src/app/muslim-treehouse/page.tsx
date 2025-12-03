@@ -10,9 +10,9 @@ export default function MuslimTreehousePage() {
       headline="Muslim Treehouse"
       subtext="Weekly live Islamic sessions kids enjoy — free for your first month and easy to add."
       image={{
-        src: "/images/ameen.png",
+        src: "/treehouse.webp",
         alt: "Muslim Treehouse",
-        showBorder: false
+        showBorder: true
       }}
       nextRoute="/challenges-program"
     />

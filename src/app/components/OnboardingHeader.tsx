@@ -85,7 +85,7 @@ export default function OnboardingHeader({
           className="rounded-full overflow-hidden" 
           style={{ 
             height: '8px',
-            backgroundColor: 'var(--color-bg-alt)',
+            backgroundColor: 'var(--color-bg-secondary)',
             flex: '1 1 auto',
             transition: 'all 0.3s ease-out',
             minWidth: 0,
@@ -95,7 +95,7 @@ export default function OnboardingHeader({
             className="h-full transition-all duration-500 ease-out"
             style={{ 
               width: `${percentage}%`,
-              backgroundColor: 'var(--color-primary)',
+              backgroundColor: 'var(--color-secondary-light)',
             }}
           />
         </div>

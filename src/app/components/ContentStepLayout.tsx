@@ -133,13 +133,8 @@ export default function ContentStepLayout({
             {/* Image */}
             {image && (
               <div 
-                className="relative overflow-hidden animate-fade-in mx-auto"
+                className="relative overflow-visible animate-fade-in mx-auto"
                 style={{
-                  height: '300px',
-                  width: 'fit-content',
-                  maxWidth: '100%',
-                  borderRadius: 'var(--radius-xl)',
-                  ...(image.showBorder !== false && { border: '1px solid var(--color-secondary)' }),
                   animationDelay: bulletPoints && bulletPoints.length > 0 
                     ? `${0.1 + bulletPoints.length * 0.1}s` 
                     : subtext 
@@ -150,18 +145,32 @@ export default function ContentStepLayout({
                   marginBottom: 'var(--spacing-lg)',
                 }}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={800}
-                  height={300}
+                <div
+                  className="relative overflow-hidden"
                   style={{
-                    width: 'auto',
                     height: '300px',
-                    borderRadius: 'var(--radius-lg)',
+                    width: 'fit-content',
+                    maxWidth: '100%',
+                    borderRadius: 'var(--radius-xl)',
+                    ...(image.showBorder !== false && { 
+                      border: '1px solid var(--color-secondary-dark)',
+                      boxShadow: '4px 4px 0 0 var(--color-secondary-dark), 0 4px 0 0 var(--color-secondary-dark)',
+                    }),
                   }}
-                  className="object-contain"
-                />
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={800}
+                    height={300}
+                    style={{
+                      width: 'auto',
+                      height: '300px',
+                      borderRadius: 'var(--radius-lg)',
+                    }}
+                    className="object-contain"
+                  />
+                </div>
               </div>
             )}
           </div>

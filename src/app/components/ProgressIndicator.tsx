@@ -11,12 +11,12 @@ export default function ProgressIndicator({ currentStep, totalSteps }: ProgressI
   return (
     <div className="w-full mb-4 animate-fade-in">
       {/* Progress Bar */}
-      <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-bg-alt)' }}>
+      <div className="w-full rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-bg-secondary)', height: '12px' }}>
         <div 
           className="h-full transition-all duration-500 ease-out"
           style={{ 
             width: `${percentage}%`,
-            backgroundColor: 'var(--color-primary)',
+            backgroundColor: 'var(--color-secondary-light)',
           }}
         />
       </div>
