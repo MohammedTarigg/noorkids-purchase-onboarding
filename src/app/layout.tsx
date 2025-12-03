@@ -1,6 +1,7 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
+import { OnboardingProvider } from "./contexts/OnboardingContext";
+import OnboardingHeader from "./components/OnboardingHeader";
 
 export const metadata: Metadata = {
   title: "Noor Kids - Character Building Program",
@@ -14,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <OnboardingProvider>
+          <OnboardingHeader />
+          {children}
+        </OnboardingProvider>
+      </body>
     </html>
   );
 }

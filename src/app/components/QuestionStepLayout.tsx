@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import OnboardingHeader from './OnboardingHeader';
 import OptionButton from './OptionButton';
 import CTAButton from './CTAButton';
 import AnimatedText from './AnimatedText';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 interface QuestionOption {
   id: string;
@@ -39,7 +39,14 @@ export default function QuestionStepLayout({
   validateSelection,
 }: QuestionStepLayoutProps) {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  // Update context when component mounts or step changes
+  useEffect(() => {
+    setCurrentStep(currentStep);
+    setTotalSteps(totalSteps);
+  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
 
   const handleOptionClick = (id: string) => {
     if (selectionType === 'single') {
@@ -75,7 +82,8 @@ export default function QuestionStepLayout({
         }
       }
       
-      // Navigate to next route
+      // Update step before navigation to trigger animation
+      setCurrentStep(currentStep + 1);
       router.push(nextRoute);
     }
   };
@@ -96,9 +104,6 @@ export default function QuestionStepLayout({
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={currentStep} totalSteps={totalSteps} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

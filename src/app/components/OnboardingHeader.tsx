@@ -1,22 +1,26 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
-interface OnboardingHeaderProps {
-  currentStep: number;
-  totalSteps: number;
-}
-
-export default function OnboardingHeader({ 
-  currentStep, 
-  totalSteps
-}: OnboardingHeaderProps) {
+export default function OnboardingHeader() {
   const router = useRouter();
+  const pathname = usePathname();
+  const { currentStep, totalSteps, setCurrentStep } = useOnboardingContext();
   const percentage = (currentStep / totalSteps) * 100;
   const canGoBack = currentStep > 1;
 
+  // Hide header on welcome page (root path)
+  if (pathname === '/') {
+    return null;
+  }
+
   const handleBack = () => {
+    // Decrease step before navigating back to trigger animation
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
     router.back();
   };
 

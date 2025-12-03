@@ -1,11 +1,11 @@
 'use client';
 
-import { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import OnboardingHeader from './OnboardingHeader';
 import CTAButton from './CTAButton';
 import AnimatedText, { calculateLastWordStartDelay } from './AnimatedText';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 interface BulletPoint {
   text: string;
@@ -43,6 +43,13 @@ export default function ContentStepLayout({
   continueButtonText = 'Continue',
 }: ContentStepLayoutProps) {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts or step changes
+  useEffect(() => {
+    setCurrentStep(currentStep);
+    setTotalSteps(totalSteps);
+  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
 
   // Calculate sequential animation delays
   // Start next element when previous element's last word starts animating, with a small delay between sections
@@ -65,14 +72,13 @@ export default function ContentStepLayout({
     if (onContinue) {
       onContinue();
     }
+    // Update step before navigation to trigger animation
+    setCurrentStep(currentStep + 1);
     router.push(nextRoute);
   };
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={currentStep} totalSteps={totalSteps} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

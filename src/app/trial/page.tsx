@@ -1,13 +1,19 @@
 'use client';
 
-import OnboardingHeader from '../components/OnboardingHeader';
+import { useEffect } from 'react';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 export default function TrialPage() {
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(18);
+    setTotalSteps(19);
+  }, [setCurrentStep, setTotalSteps]);
+
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={18} totalSteps={15} />
-      
       <div 
         className="min-h-screen flex items-center justify-center" 
         style={{ 

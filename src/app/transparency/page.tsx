@@ -1,13 +1,21 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Lottie from 'lottie-react';
-import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 import emailAnimation from '../../../public/Email.json';
 
 export default function TransparencyPage() {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(17);
+    setTotalSteps(19);
+  }, [setCurrentStep, setTotalSteps]);
 
   const handleContinue = () => {
     router.push('/books-picked');
@@ -15,9 +23,6 @@ export default function TransparencyPage() {
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={17} totalSteps={15} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

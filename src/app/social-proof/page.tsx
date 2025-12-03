@@ -1,13 +1,14 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 type Testimonial = {
   name: string;
@@ -58,6 +59,13 @@ const testimonials: Testimonial[] = [
 
 export default function SocialProofPage() {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(15);
+    setTotalSteps(19);
+  }, [setCurrentStep, setTotalSteps]);
 
   const handleContinue = () => {
     router.push('/start-trial');
@@ -65,9 +73,6 @@ export default function SocialProofPage() {
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={15} totalSteps={15} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

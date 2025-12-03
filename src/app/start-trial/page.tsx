@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Lottie from 'lottie-react';
-import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 import giftAnimation from '../../../public/Gift.json';
 
 export default function StartTrialPage() {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(16);
+    setTotalSteps(19);
+  }, [setCurrentStep, setTotalSteps]);
   
   // Initialize state from sessionStorage if available
   const [addMuslimTreehouse, setAddMuslimTreehouse] = useState(() => {
@@ -36,9 +43,6 @@ export default function StartTrialPage() {
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={16} totalSteps={15} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

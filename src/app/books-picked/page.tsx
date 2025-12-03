@@ -3,11 +3,18 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import OnboardingHeader from '../components/OnboardingHeader';
 import CTAButton from '../components/CTAButton';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 export default function BooksPickedPage() {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(18);
+    setTotalSteps(19);
+  }, [setCurrentStep, setTotalSteps]);
 
   const bookBundles = [
     {
@@ -56,9 +63,6 @@ export default function BooksPickedPage() {
 
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={18} totalSteps={15} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 

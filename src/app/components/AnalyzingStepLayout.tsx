@@ -2,9 +2,9 @@
 
 import { useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import OnboardingHeader from './OnboardingHeader';
 import CTAButton from './CTAButton';
 import AnimatedText from './AnimatedText';
+import { useOnboardingContext } from '../contexts/OnboardingContext';
 
 interface AnalyzingStepLayoutProps {
   currentStep: number;
@@ -38,8 +38,15 @@ export default function AnalyzingStepLayout({
   continueButtonText = 'Continue',
 }: AnalyzingStepLayoutProps) {
   const router = useRouter();
+  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
   const [loading, setLoading] = useState(true);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Update context when component mounts or step changes
+  useEffect(() => {
+    setCurrentStep(currentStep);
+    setTotalSteps(totalSteps);
+  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
 
   // Cycle through analyzing messages
   useEffect(() => {
@@ -71,6 +78,8 @@ export default function AnalyzingStepLayout({
 
   const handleContinue = () => {
     onContinue();
+    // Update step before navigation to trigger animation
+    setCurrentStep(currentStep + 1);
     router.push(nextRoute);
   };
 
@@ -78,7 +87,6 @@ export default function AnalyzingStepLayout({
   if (loading) {
     return (
       <>
-        <OnboardingHeader currentStep={currentStep} totalSteps={totalSteps} />
         <div 
           className="min-h-screen flex flex-col items-center justify-center" 
           style={{ 
@@ -121,9 +129,6 @@ export default function AnalyzingStepLayout({
   // Results state
   return (
     <>
-      {/* Header with Progress Bar and Back Button */}
-      <OnboardingHeader currentStep={currentStep} totalSteps={totalSteps} />
-      
       <div 
         className="min-h-screen flex flex-col" 
         style={{ 
