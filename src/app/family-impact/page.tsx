@@ -29,8 +29,6 @@ export default function FamilyImpactPage() {
 
   return (
     <QuestionStepLayout
-      currentStep={5}
-      totalSteps={19}
       headline="How does this impact your family?"
       options={impactOptions}
       selectionType="multi"

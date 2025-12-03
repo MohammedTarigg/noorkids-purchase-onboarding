@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useState, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import CTAButton from './CTAButton';
 import AnimatedText from './AnimatedText';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 interface AnalyzingStepLayoutProps {
-  currentStep: number;
-  totalSteps: number;
   loadingDuration?: number; // Duration in milliseconds
   headline?: string; // Optional headline
   content: ReactNode | (() => ReactNode); // The content to show after loading (insight card, etc.)
@@ -26,8 +25,6 @@ const analyzingMessages = [
 ];
 
 export default function AnalyzingStepLayout({
-  currentStep,
-  totalSteps,
   loadingDuration = 3000,
   headline,
   content,
@@ -38,15 +35,18 @@ export default function AnalyzingStepLayout({
   continueButtonText = 'Continue',
 }: AnalyzingStepLayoutProps) {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const pathname = usePathname();
+  const { setCurrentStep } = useOnboardingContext();
   const [loading, setLoading] = useState(true);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
-  // Update context when component mounts or step changes
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
+
+  // Update context when component mounts or route changes
   useEffect(() => {
     setCurrentStep(currentStep);
-    setTotalSteps(totalSteps);
-  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
+  }, [currentStep, setCurrentStep]);
 
   // Cycle through analyzing messages
   useEffect(() => {
@@ -79,7 +79,8 @@ export default function AnalyzingStepLayout({
   const handleContinue = () => {
     onContinue();
     // Update step before navigation to trigger animation
-    setCurrentStep(currentStep + 1);
+    const nextStep = getStepForRoute(nextRoute);
+    setCurrentStep(nextStep);
     router.push(nextRoute);
   };
 

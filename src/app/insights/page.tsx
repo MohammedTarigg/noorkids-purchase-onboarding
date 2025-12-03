@@ -182,8 +182,6 @@ export default function InsightsPage() {
 
   return (
     <AnalyzingStepLayout
-      currentStep={8}
-      totalSteps={19}
       loadingDuration={3000}
       headline={insight?.section1}
       content={getInsightContent}

@@ -1,21 +1,25 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Lottie from 'lottie-react';
 import CTAButton from '../components/CTAButton';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 import emailAnimation from '../../../public/Email.json';
 
 export default function TransparencyPage() {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const { setCurrentStep } = useOnboardingContext();
+  const pathname = usePathname();
+
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
 
   // Update context when component mounts
   useEffect(() => {
-    setCurrentStep(17);
-    setTotalSteps(19);
-  }, [setCurrentStep, setTotalSteps]);
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
 
   const handleContinue = () => {
     router.push('/books-picked');

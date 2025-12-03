@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import CTAButton from '../components/CTAButton';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 type Testimonial = {
   name: string;
@@ -59,13 +60,16 @@ const testimonials: Testimonial[] = [
 
 export default function SocialProofPage() {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const { setCurrentStep } = useOnboardingContext();
+  const pathname = usePathname();
+
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
 
   // Update context when component mounts
   useEffect(() => {
-    setCurrentStep(15);
-    setTotalSteps(19);
-  }, [setCurrentStep, setTotalSteps]);
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
 
   const handleContinue = () => {
     router.push('/start-trial');

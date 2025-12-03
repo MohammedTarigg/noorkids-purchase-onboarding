@@ -1,12 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { TOTAL_ONBOARDING_STEPS } from '../utils/onboardingSteps';
 
 interface OnboardingContextType {
   currentStep: number;
   totalSteps: number;
   setCurrentStep: (step: number) => void;
-  setTotalSteps: (steps: number) => void;
 }
 
 const OnboardingContext = createContext<OnboardingContextType | undefined>(undefined);
@@ -14,19 +14,18 @@ const OnboardingContext = createContext<OnboardingContextType | undefined>(undef
 interface OnboardingProviderProps {
   children: ReactNode;
   initialStep?: number;
-  initialTotalSteps?: number;
 }
 
 export function OnboardingProvider({ 
   children, 
   initialStep = 1,
-  initialTotalSteps = 19 
 }: OnboardingProviderProps) {
   const [currentStep, setCurrentStep] = useState(initialStep);
-  const [totalSteps, setTotalSteps] = useState(initialTotalSteps);
+  // Total steps is now fixed and centralized
+  const totalSteps = TOTAL_ONBOARDING_STEPS;
 
   return (
-    <OnboardingContext.Provider value={{ currentStep, totalSteps, setCurrentStep, setTotalSteps }}>
+    <OnboardingContext.Provider value={{ currentStep, totalSteps, setCurrentStep }}>
       {children}
     </OnboardingContext.Provider>
   );

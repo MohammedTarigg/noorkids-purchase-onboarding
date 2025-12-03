@@ -1,21 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Lottie from 'lottie-react';
 import CTAButton from '../components/CTAButton';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 import giftAnimation from '../../../public/Gift.json';
 
 export default function StartTrialPage() {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const { setCurrentStep } = useOnboardingContext();
+  const pathname = usePathname();
+
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
 
   // Update context when component mounts
   useEffect(() => {
-    setCurrentStep(16);
-    setTotalSteps(19);
-  }, [setCurrentStep, setTotalSteps]);
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
   
   // Initialize state from sessionStorage if available
   const [addMuslimTreehouse, setAddMuslimTreehouse] = useState(() => {
@@ -171,7 +175,7 @@ export default function StartTrialPage() {
                     Add a Free Month of Muslim Treehouse
                   </div>
                   <div className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                    Weekly live Islamic sessions. $X/month after the free month, cancel anytime.
+                    Weekly live Islamic sessions. $9.99/month after the free month, cancel anytime.
                   </div>
                 </div>
               </div>

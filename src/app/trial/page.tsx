@@ -1,16 +1,21 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 export default function TrialPage() {
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const { setCurrentStep } = useOnboardingContext();
+  const pathname = usePathname();
+
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
 
   // Update context when component mounts
   useEffect(() => {
-    setCurrentStep(18);
-    setTotalSteps(19);
-  }, [setCurrentStep, setTotalSteps]);
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
 
   return (
     <>

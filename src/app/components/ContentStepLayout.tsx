@@ -1,11 +1,12 @@
 'use client';
 
 import { ReactNode, useMemo, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import CTAButton from './CTAButton';
 import AnimatedText, { calculateLastWordStartDelay } from './AnimatedText';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 interface BulletPoint {
   text: string;
@@ -20,8 +21,6 @@ interface ImageProps {
 }
 
 interface ContentStepLayoutProps {
-  currentStep: number;
-  totalSteps: number;
   headline: string;
   subtext?: string;
   bulletPoints?: BulletPoint[];
@@ -32,8 +31,6 @@ interface ContentStepLayoutProps {
 }
 
 export default function ContentStepLayout({
-  currentStep,
-  totalSteps,
   headline,
   subtext,
   bulletPoints,
@@ -43,13 +40,16 @@ export default function ContentStepLayout({
   continueButtonText = 'Continue',
 }: ContentStepLayoutProps) {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const pathname = usePathname();
+  const { setCurrentStep } = useOnboardingContext();
 
-  // Update context when component mounts or step changes
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
+
+  // Update context when component mounts or route changes
   useEffect(() => {
     setCurrentStep(currentStep);
-    setTotalSteps(totalSteps);
-  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
+  }, [currentStep, setCurrentStep]);
 
   // Calculate sequential animation delays
   // Start next element when previous element's last word starts animating, with a small delay between sections
@@ -73,7 +73,8 @@ export default function ContentStepLayout({
       onContinue();
     }
     // Update step before navigation to trigger animation
-    setCurrentStep(currentStep + 1);
+    const nextStep = getStepForRoute(nextRoute);
+    setCurrentStep(nextStep);
     router.push(nextRoute);
   };
 
@@ -162,7 +163,7 @@ export default function ContentStepLayout({
             {/* Image */}
             {image && (
               <div 
-                className="relative overflow-visible animate-fade-in mx-auto"
+                className="flex justify-center animate-fade-in"
                 style={{
                   animationDelay: bulletPoints && bulletPoints.length > 0 
                     ? `${0.1 + bulletPoints.length * 0.1}s` 

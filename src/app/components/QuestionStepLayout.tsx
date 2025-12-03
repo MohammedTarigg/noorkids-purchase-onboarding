@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import OptionButton from './OptionButton';
 import CTAButton from './CTAButton';
 import AnimatedText from './AnimatedText';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 interface QuestionOption {
   id: string;
@@ -14,8 +15,6 @@ interface QuestionOption {
 }
 
 interface QuestionStepLayoutProps {
-  currentStep: number;
-  totalSteps: number;
   headline: string;
   options: QuestionOption[];
   selectionType: 'single' | 'multi';
@@ -27,8 +26,6 @@ interface QuestionStepLayoutProps {
 }
 
 export default function QuestionStepLayout({
-  currentStep,
-  totalSteps,
   headline,
   options,
   selectionType,
@@ -39,14 +36,17 @@ export default function QuestionStepLayout({
   validateSelection,
 }: QuestionStepLayoutProps) {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const pathname = usePathname();
+  const { setCurrentStep } = useOnboardingContext();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
-  // Update context when component mounts or step changes
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
+
+  // Update context when component mounts or route changes
   useEffect(() => {
     setCurrentStep(currentStep);
-    setTotalSteps(totalSteps);
-  }, [currentStep, totalSteps, setCurrentStep, setTotalSteps]);
+  }, [currentStep, setCurrentStep]);
 
   const handleOptionClick = (id: string) => {
     if (selectionType === 'single') {
@@ -83,7 +83,8 @@ export default function QuestionStepLayout({
       }
       
       // Update step before navigation to trigger animation
-      setCurrentStep(currentStep + 1);
+      const nextStep = getStepForRoute(nextRoute);
+      setCurrentStep(nextStep);
       router.push(nextRoute);
     }
   };

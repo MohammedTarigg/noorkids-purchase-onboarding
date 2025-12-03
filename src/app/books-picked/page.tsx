@@ -1,20 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import CTAButton from '../components/CTAButton';
 import { useOnboardingContext } from '../contexts/OnboardingContext';
+import { getStepForRoute } from '../utils/onboardingSteps';
 
 export default function BooksPickedPage() {
   const router = useRouter();
-  const { setCurrentStep, setTotalSteps } = useOnboardingContext();
+  const { setCurrentStep } = useOnboardingContext();
+  const pathname = usePathname();
+
+  // Automatically determine current step from route
+  const currentStep = getStepForRoute(pathname);
 
   // Update context when component mounts
   useEffect(() => {
-    setCurrentStep(18);
-    setTotalSteps(19);
-  }, [setCurrentStep, setTotalSteps]);
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
 
   const bookBundles = [
     {
@@ -46,7 +50,7 @@ export default function BooksPickedPage() {
   }, [selectedBooks]);
 
   const handleContinue = () => {
-    router.push('/trial-offer');
+    router.push('/trial');
   };
 
   const toggleBook = (bookId: string) => {

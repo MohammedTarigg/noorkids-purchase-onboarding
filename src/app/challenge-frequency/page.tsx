@@ -30,8 +30,6 @@ export default function ChallengeFrequencyPage() {
 
   return (
     <QuestionStepLayout
-      currentStep={4}
-      totalSteps={19}
       headline="Roughly how often do you notice these challenges?"
       options={frequencyOptions}
       selectionType="single"

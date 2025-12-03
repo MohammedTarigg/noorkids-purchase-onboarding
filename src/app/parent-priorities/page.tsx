@@ -29,8 +29,6 @@ export default function ParentPrioritiesPage() {
 
   return (
     <QuestionStepLayout
-      currentStep={7}
-      totalSteps={19}
       headline="What matters most to you as a parent?"
       options={priorityOptions}
       selectionType="multi"
