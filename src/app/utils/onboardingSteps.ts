@@ -3,7 +3,7 @@
  * This ensures consistent step numbers and total steps across all pages
  * 
  * Note: Welcome page (/) is step 1 but doesn't show progress bar
- * Total steps = 18 (all pages with progress bar)
+ * Total steps = 18 (all pages with progress bar, excluding welcome)
  */
 
 export const TOTAL_ONBOARDING_STEPS = 18;
@@ -12,6 +12,7 @@ export const TOTAL_ONBOARDING_STEPS = 18;
  * Maps route paths to their step numbers
  * Step 1 is the welcome page (no header/progress shown)
  * Steps 2-18 are the onboarding pages with progress bar
+ * Note: trial-offer was removed, so books-picked goes directly to trial
  */
 export const STEP_ROUTE_MAP: Record<string, number> = {
   '/': 1,
@@ -32,7 +33,7 @@ export const STEP_ROUTE_MAP: Record<string, number> = {
   '/start-trial': 16,
   '/transparency': 17,
   '/books-picked': 18,
-  '/trial': 18, // Final step - same as books-picked since trial-offer was removed
+  '/trial': 18, // Final step - checkout page (trial-offer was removed)
 };
 
 /**
