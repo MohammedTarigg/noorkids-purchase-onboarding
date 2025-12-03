@@ -15,6 +15,7 @@ type Testimonial = {
   name: string;
   username: string;
   initial: string;
+  avatar?: string;
   text: string;
   stars: number;
 };
@@ -24,6 +25,7 @@ const testimonials: Testimonial[] = [
     name: 'Musa Gedda',
     username: '@musa_gedda',
     initial: 'M',
+    avatar: '/musa-gedda.png',
     text: 'Great 👍 for our kids',
     stars: 5
   },
@@ -31,6 +33,7 @@ const testimonials: Testimonial[] = [
     name: 'Bushra',
     username: '@bushra',
     initial: 'B',
+    avatar: '/bushra.png',
     text: 'It\'s wonderful experience. Thanks Noor kids team',
     stars: 5
   },
@@ -38,6 +41,7 @@ const testimonials: Testimonial[] = [
     name: 'Madiha',
     username: '@madiha',
     initial: 'M',
+    avatar: '/madiha.png',
     text: 'My kindergartner looks forward to receiving our monthly Noor Kids book! He enjoys the format the characters and the stories.',
     stars: 5
   },
@@ -45,6 +49,7 @@ const testimonials: Testimonial[] = [
     name: 'Malahat Afzal',
     username: '@malahat_afzal',
     initial: 'M',
+    avatar: '/malahat-afzal.png',
     text: 'My kids love Noor Kids. They watched the summer program before and they both are enjoying the books now!',
     stars: 5
   },
@@ -53,6 +58,7 @@ const testimonials: Testimonial[] = [
     name: 'Aleq Jaffery',
     username: '@aleq_jaffery',
     initial: 'A',
+    avatar: '/aleq-jaffery.png',
     text: 'Concepts are simple enough for small kids and older ones have fun with the activities. I\'m grateful to have found this resource.',
     stars: 5
   }
@@ -269,12 +275,28 @@ export default function SocialProofPage() {
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-2">
                             {/* Avatar */}
-                            <div 
-                              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold text-sm"
-                              style={{ backgroundColor: '#FEF3C7', color: '#F59E0B' }}
-                            >
-                              {testimonial.initial}
-                            </div>
+                            {testimonial.avatar ? (
+                              <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0">
+                                <Image
+                                  src={testimonial.avatar}
+                                  alt={testimonial.name}
+                                  width={40}
+                                  height={40}
+                                  className="object-cover"
+                                  style={{
+                                    width: '100%',
+                                    height: '100%',
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              <div 
+                                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold text-sm"
+                                style={{ backgroundColor: '#FEF3C7', color: '#F59E0B' }}
+                              >
+                                {testimonial.initial}
+                              </div>
+                            )}
                             {/* Name and Username */}
                             <div>
                               <p className="font-bold text-sm mb-0.5" style={{ color: 'var(--color-text-primary)' }}>

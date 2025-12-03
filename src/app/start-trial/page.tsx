@@ -10,17 +10,12 @@ import giftAnimation from '../../../public/Gift.json';
 
 export default function StartTrialPage() {
   const router = useRouter();
-  const { setCurrentStep } = useOnboardingContext();
   const pathname = usePathname();
+  const { setCurrentStep } = useOnboardingContext();
 
   // Automatically determine current step from route
   const currentStep = getStepForRoute(pathname);
 
-  // Update context when component mounts
-  useEffect(() => {
-    setCurrentStep(currentStep);
-  }, [currentStep, setCurrentStep]);
-  
   // Initialize state from sessionStorage if available
   const [addMuslimTreehouse, setAddMuslimTreehouse] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -29,6 +24,11 @@ export default function StartTrialPage() {
     }
     return true;
   });
+
+  // Update context when component mounts
+  useEffect(() => {
+    setCurrentStep(currentStep);
+  }, [currentStep, setCurrentStep]);
 
   // Save state to sessionStorage when it changes
   useEffect(() => {
