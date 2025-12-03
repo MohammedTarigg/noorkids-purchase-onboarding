@@ -1,10 +1,11 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import OnboardingHeader from './OnboardingHeader';
 import CTAButton from './CTAButton';
+import AnimatedText, { calculateLastWordStartDelay } from './AnimatedText';
 
 interface BulletPoint {
   text: string;
@@ -43,6 +44,23 @@ export default function ContentStepLayout({
 }: ContentStepLayoutProps) {
   const router = useRouter();
 
+  // Calculate sequential animation delays
+  // Start next element when previous element's last word starts animating, with a small delay between sections
+  const sectionDelay = 0.2; // Small delay between sections for smoother transition
+  
+  const headlineLastWordStart = useMemo(() => 
+    calculateLastWordStartDelay(headline, 0.1), 
+    [headline]
+  );
+  
+  const subtextLastWordStart = useMemo(() => 
+    subtext ? calculateLastWordStartDelay(subtext, 0.1) : 0, 
+    [subtext]
+  );
+  
+  const subtextDelay = headlineLastWordStart + sectionDelay;
+  const bulletPointsDelay = subtextDelay + subtextLastWordStart + sectionDelay;
+
   const handleContinue = () => {
     if (onContinue) {
       onContinue();
@@ -75,30 +93,28 @@ export default function ContentStepLayout({
             }}
           >
             {/* Headline */}
-            <h1 
-              className="text-2xl font-bold animate-slide-in text-center" 
+            <AnimatedText
+              as="h1"
+              text={headline}
+              className="text-2xl font-bold text-center"
               style={{ 
                 color: 'var(--color-text-primary)',
                 marginBottom: subtext ? 'var(--spacing-md)' : bulletPoints ? 'var(--spacing-xl)' : image ? 'var(--spacing-xl)' : '0',
               }}
-            >
-              {headline}
-            </h1>
+            />
             
             {/* Subtext */}
             {subtext && (
-              <p 
-                className="text-base animate-slide-in text-center" 
+              <AnimatedText
+                as="p"
+                text={subtext}
+                initialDelay={subtextDelay}
+                className="text-base text-center"
                 style={{ 
-                  color: 'var(--color-text-secondary)', 
-                  animationDelay: '0.1s', 
-                  opacity: 0, 
-                  animationFillMode: 'forwards',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: bulletPoints ? 'var(--spacing-xl)' : image ? 'var(--spacing-xl)' : 'var(--spacing-lg)',
                 }}
-              >
-                {subtext}
-              </p>
+              />
             )}
             
             {/* Bullet Points */}
@@ -107,26 +123,33 @@ export default function ContentStepLayout({
                 className="space-y-6" 
                 style={{ marginBottom: image ? 'var(--spacing-xl)' : 'var(--spacing-lg)' }}
               >
-                {bulletPoints.map((point, index) => (
-                  <div 
-                    key={index} 
-                    className="flex gap-3 animate-slide-in" 
-                    style={{ 
-                      animationDelay: `${0.1 + index * 0.1}s`, 
-                      opacity: 0, 
-                      animationFillMode: 'forwards' 
-                    }}
-                  >
-                    <div className="flex items-center justify-center shrink-0">
-                      {point.icon}
+                {bulletPoints.map((point, index) => {
+                  const containerDelay = bulletPointsDelay + index * 0.1;
+                  return (
+                    <div 
+                      key={index} 
+                      className="flex gap-3 animate-slide-in" 
+                      style={{ 
+                        animationDelay: `${containerDelay}s`, 
+                        opacity: 0, 
+                        animationFillMode: 'forwards' 
+                      }}
+                    >
+                      <div className="flex items-center justify-center shrink-0">
+                        {point.icon}
+                      </div>
+                      <div className="flex-1 flex items-center">
+                        <AnimatedText
+                          as="p"
+                          text={point.text}
+                          initialDelay={containerDelay + 0.3}
+                          className="text-base text-left"
+                          style={{ color: 'var(--color-text-secondary)' }}
+                        />
+                      </div>
                     </div>
-                    <div className="flex-1 flex items-center">
-                      <p className="text-base text-left" style={{ color: 'var(--color-text-secondary)' }}>
-                        {point.text}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             

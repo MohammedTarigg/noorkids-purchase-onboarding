@@ -4,6 +4,7 @@ import { useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import OnboardingHeader from './OnboardingHeader';
 import CTAButton from './CTAButton';
+import AnimatedText from './AnimatedText';
 
 interface AnalyzingStepLayoutProps {
   currentStep: number;
@@ -144,15 +145,15 @@ export default function AnalyzingStepLayout({
           >
             {/* Headline - Top of card */}
             {headline && (
-              <h1 
-                className="text-2xl font-bold text-left animate-slide-in" 
+              <AnimatedText
+                as="h1"
+                text={headline}
+                className="text-2xl font-bold text-left"
                 style={{ 
                   color: 'var(--color-text-primary)',
                   marginBottom: 'var(--spacing-xl)',
                 }}
-              >
-                {headline}
-              </h1>
+              />
             )}
 
             {/* Content */}

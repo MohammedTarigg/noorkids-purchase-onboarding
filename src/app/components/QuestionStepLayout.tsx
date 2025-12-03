@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import OnboardingHeader from './OnboardingHeader';
 import OptionButton from './OptionButton';
 import CTAButton from './CTAButton';
+import AnimatedText from './AnimatedText';
 
 interface QuestionOption {
   id: string;
@@ -118,15 +119,15 @@ export default function QuestionStepLayout({
             }}
           >
             {/* Headline */}
-            <h1 
-              className="text-2xl font-bold animate-slide-in text-left" 
+            <AnimatedText
+              as="h1"
+              text={headline}
+              className="text-2xl font-bold text-left"
               style={{ 
                 color: 'var(--color-text-primary)',
                 marginBottom: 'var(--spacing-xl)',
               }}
-            >
-              {headline}
-            </h1>
+            />
             
             {/* Options - One per row */}
             <div 
